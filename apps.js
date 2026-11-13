@@ -6,50 +6,70 @@
   save, and upload. No other file needs to change. See README.md for every field.
   Tip: open admin.html in your browser to fill a form that writes a block for you.
 
-  Website URLs for TTu and Eilpah (open in the browser or on iPhone — nothing to
-  download). Switch these two values to https://ttu.hadtah.com and
-  https://eilpah.hadtah.com when the custom domains go live.
+  Website URLs (open in the browser or on iPhone — nothing to download). Switch these
+  to https://ttu.hadtah.com, https://eilpah.hadtah.com, https://library.hadtah.com and
+  https://cashflow.hadtah.com (or similar) when the custom domains go live.
 */
 var HADTAH_WEB = {
   ttu: "https://ttu.hadtah.workers.dev",
-  eilpah: "https://eilpah.hadtah.workers.dev"
+  eilpah: "https://eilpah.hadtah.workers.dev",
+  library: "https://offline-library.hadtah.workers.dev",
+  cashflow: "https://cash-flow.hadtah.workers.dev"
 };
 
 window.HADTAH_APPS = [
   {
     "id": "offline-library",
-    "name": "Offline Library App",
+    "name": "Offline Library",
     "category": "Education",
-    "description": "Keep a school library's book list, lend books to students and record returns, with no internet needed.",
-    "details": "Add every book with an ID, title and author, search by title or author, lend a book to a named student and mark it returned. The list shows which books are available and who has each borrowed book. Everything is saved on the computer in a small database file, so it works fully offline.",
-    "version": "1.0",
-    "size": "TBA",
-    "platforms": ["Windows 10", "Windows 11"],
+    "description": "Run a school library with no internet: books, members, lending, returns and overdue reports.",
+    "details": "Offline Library is the professional version of the Senior One Offline Library App project. Add every book with title, author, ISBN, category, shelf and number of copies, or import the whole list from Excel (CSV). Register students and teachers, lend a book with a due date, then return or renew it; overdue books turn red and the dashboard shows what needs follow-up. Optional fines per day late, a borrowing limit per member, and PDF or CSV reports of the catalogue, overdue books, books on loan, members and lending history. Everything is saved on your own device and works fully offline. Download a backup file to move it to another phone or computer.",
+    "version": "1.0.0",
+    "size": "Web app · Android 5.2 MB · Windows 122 MB",
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
-    "status": "coming soon",
-    "download_url": "#",
-    "icon": "assets/icons/library.svg",
+    "status": "available",
+    "open_url": HADTAH_WEB.library,
+    "open_label": "Open Offline Library",
+    "ios_url": HADTAH_WEB.library,
+    "ios_label": "Open on iPhone",
+    "download_url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe",
+    "downloads": [
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-1.0.0-debug.apk", "size": "5.2 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
+    ],
+    "note": "Works without internet. Your library stays on your device, so download a backup now and then (Settings).",
+    "icon": "assets/icons/offline-library.png",
     "featured": true,
     "changelog": [
-      { "version": "1.0", "date": "", "notes": "First version: add, search, lend, return and delete books." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt as a professional app: books, members, lending and returns, overdue alerts, optional fines, CSV import, PDF reports, backups, dark and light mode, on web, iPhone, Android and Windows." }
     ]
   },
   {
-    "id": "cash-flow-tracker",
-    "name": "Cash Flow Tracker",
+    "id": "cash-flow",
+    "name": "Cash Flow",
     "category": "Business",
-    "description": "Record money coming in and going out for a small business or school project, and see the balance.",
-    "details": "Enter each sale, payment or expense with a short note and amount. The app keeps a running record and shows how much has come in, gone out and what is left, so a small shop, club or project can track its money without a spreadsheet. Works offline.",
-    "version": "1.0",
-    "size": "TBA",
-    "platforms": ["Windows 10", "Windows 11"],
+    "description": "Track money in and money out for your business, see your balance and profit, and print reports. Works offline.",
+    "details": "Cash Flow is the professional version of the Senior One Cash Flow Tracker project. Record each sale, payment or expense with amount, category, date, Cash or Mobile Money, customer or supplier and receipt number. The dashboard shows your balance, money in and out this month against last month, profit and margin, a 6-month chart and the 30-day balance trend. Reports give daily, weekly or monthly summaries with a running balance and where the money came from and went, as PDF or CSV. Set monthly budgets per category and an income target, keep several businesses with their own currency (UGX by default), and import entries from Excel. Everything is saved on your device and works fully offline.",
+    "version": "1.0.0",
+    "size": "Web app · Android 5.2 MB · Windows 122 MB",
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
-    "status": "coming soon",
-    "download_url": "#",
-    "icon": "assets/icons/cashflow.svg",
-    "featured": false,
+    "status": "available",
+    "open_url": HADTAH_WEB.cashflow,
+    "open_label": "Open Cash Flow",
+    "ios_url": HADTAH_WEB.cashflow,
+    "ios_label": "Open on iPhone",
+    "download_url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe",
+    "downloads": [
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-1.0.0-debug.apk", "size": "5.2 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
+    ],
+    "note": "Works without internet. Your records stay on your device, so download a backup now and then (Settings).",
+    "icon": "assets/icons/cash-flow.png",
+    "featured": true,
     "changelog": [
-      { "version": "1.0", "date": "", "notes": "First version." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt as a professional app: money in and out, several businesses, budgets, charts, daily/weekly/monthly reports as PDF or CSV, backups, dark and light mode, on web, iPhone, Android and Windows." }
     ]
   },
   {
@@ -81,14 +101,14 @@ window.HADTAH_APPS = [
     "description": "Paste a message you received and Lamma tells you if it looks like a scam, spam or a spy attempt.",
     "details": "Lamma (the protective spirit of ancient Sumer) is the rebuilt, professional Cyber Guard. Paste a suspicious SMS, WhatsApp or email message and its sender, and Lamma gives a verdict (Safe, Spam, Likely scam, or Danger: spy or data theft), a score and the reasons. It looks for scam and spam words, requests for PINs, OTPs, passwords or NIN, .apk/.exe install traps, links and short links, money amounts, and MTN or Airtel messages sent from an ordinary phone number. It also keeps a blocked-senders list, your own suspicious words and a history of recent checks with secret numbers hidden. Lamma only checks what you paste in; it never reads your messages by itself, and everything stays on your device.",
     "version": "1.0.0",
-    "size": "Android 4.4 MB · Windows 122 MB",
+    "size": "Android 4.4 MB · Windows 121 MB",
     "platforms": ["Android", "Windows 10/11"],
     "tested_on": "",
     "status": "available",
     "download_url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-Setup-1.0.0.exe",
     "downloads": [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-1.0.0-debug.apk", "size": "4.4 MB", "kind": "android" },
-      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-Setup-1.0.0.exe", "size": "121 MB", "kind": "windows" }
     ],
     "icon": "assets/icons/lamma.png",
     "featured": true,
@@ -103,7 +123,7 @@ window.HADTAH_APPS = [
     "description": "Ask anything: TTu searches open sources and writes a clear answer you can save as a PDF.",
     "details": "TTu searches open, free sources — encyclopaedias, research papers (OpenAlex, arXiv, Crossref), Google News, BBC and other news sites, public posts, and YouTube — then writes a clear answer with numbered source links and a Download as PDF button. Answers are written with Gemini AI (and fall back to a source summary if the free search quota is reached). Sign in with your Gmail address and a 6-digit code. 15 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). This is a TEST version: the sign-in code is shown on screen instead of emailed, and payments are not live yet. You can also install TTu on Android or Windows; it opens the same live app.",
     "version": "1.0.0 (test)",
-    "size": "Web app · Android 5.9 MB · Windows 116 MB",
+    "size": "Web app · Android 5.8 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
@@ -113,8 +133,8 @@ window.HADTAH_APPS = [
     "ios_label": "Open on iPhone",
     "download_url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe",
     "downloads": [
-      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-1.0.0-debug.apk", "size": "5.9 MB", "kind": "android" },
-      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe", "size": "116 MB", "kind": "windows" }
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-1.0.0-debug.apk", "size": "5.8 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
     "note": "Test mode: your sign-in code appears on screen.",
     "icon": "assets/icons/ttu.png",
