@@ -92,7 +92,7 @@ window.HADTAH_APPS = [
     "name": "Ennun",
     "category": "Productivity",
     "description": "A focus guard timer: pick your task, the program you may use and how long, and Ennun keeps you on it.",
-    "details": "Ennun (Sumerian for the watch a guard keeps) is the rebuilt, professional Guardian Timer. Choose a task, the program you are allowed to use and 1 to 180 minutes, then start. On Windows, Ennun checks every second which window is in front: if it is not your allowed program it counts a distraction, brings you back to your program and closes windows whose title contains a blocked word (YouTube, Facebook, TikTok, Instagram, Netflix by default, editable in Settings). On Android, leaving Ennun during a session counts as a distraction. To stop early you must type a set sentence exactly. Every session is logged (date, task, minutes done, distractions, result) and can be exported to CSV. Works fully offline.",
+    "details": "Ennun (Sumerian for the watch a guard keeps) is a focus guard timer by Hadtah. Choose a task, the program you are allowed to use and 1 to 180 minutes, then start. On Windows, Ennun checks every second which window is in front: if it is not your allowed program it counts a distraction, brings you back to your program and closes windows whose title contains a blocked word (YouTube, Facebook, TikTok, Instagram, Netflix by default, editable in Settings). On Android, leaving Ennun during a session counts as a distraction. To stop early you must type a set sentence exactly. Every session is logged (date, task, minutes done, distractions, result) and can be exported to CSV. Works fully offline.",
     "version": "1.0.0",
     "size": "Android 6.4 MB · Windows 122 MB",
     "platforms": ["Android", "Windows 10/11"],
@@ -106,7 +106,7 @@ window.HADTAH_APPS = [
     "icon": "assets/icons/ennun.png",
     "featured": true,
     "changelog": [
-      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt from Guardian Timer as Ennun: new look, Android app, window guard and blocked words on Windows, session log with CSV export." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "First release: focus timer, Android app, window guard and blocked words on Windows, session log with CSV export." }
     ]
   },
   {
@@ -120,7 +120,7 @@ window.HADTAH_APPS = [
     "name": "Lamma",
     "category": "Security",
     "description": "Paste a message you received and Lamma tells you if it looks like a scam, spam or a spy attempt.",
-    "details": "Lamma (the protective spirit of ancient Sumer) is the rebuilt, professional Cyber Guard. Paste a suspicious SMS, WhatsApp or email message and its sender, and Lamma gives a verdict (Safe, Spam, Likely scam, or Danger: spy or data theft), a score and the reasons. It looks for scam and spam words, requests for PINs, OTPs, passwords or NIN, .apk/.exe install traps, links and short links, money amounts, and MTN or Airtel messages sent from an ordinary phone number. It also keeps a blocked-senders list, your own suspicious words and a history of recent checks with secret numbers hidden. Lamma only checks what you paste in; it never reads your messages by itself, and everything stays on your device.",
+    "details": "Lamma (the protective spirit of ancient Sumer) is a scam message checker by Hadtah. Paste a suspicious SMS, WhatsApp or email message and its sender, and Lamma gives a verdict (Safe, Spam, Likely scam, or Danger: spy or data theft), a score and the reasons. It looks for scam and spam words, requests for PINs, OTPs, passwords or NIN, .apk/.exe install traps, links and short links, money amounts, and MTN or Airtel messages sent from an ordinary phone number. It also keeps a blocked-senders list, your own suspicious words and a history of recent checks with secret numbers hidden. Lamma only checks what you paste in; it never reads your messages by itself, and everything stays on your device.",
     "version": "1.0.0",
     "size": "Android 6.8 MB · Windows 122 MB",
     "platforms": ["Android", "Windows 10/11"],
@@ -134,7 +134,7 @@ window.HADTAH_APPS = [
     "icon": "assets/icons/lamma.png",
     "featured": true,
     "changelog": [
-      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt from Cyber Guard as Lamma: new look, Android app, verdict levels, blocked senders, your own words and check history." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "First release: verdict levels, blocked senders, your own words and check history, on Android and Windows." }
     ]
   },
   {
@@ -148,7 +148,7 @@ window.HADTAH_APPS = [
     "name": "Offline Library",
     "category": "Education",
     "description": "Run a school library with no internet: books, members, lending, returns and overdue reports.",
-    "details": "Offline Library is the professional version of the Senior One Offline Library App project. Add every book with title, author, ISBN, category, shelf and number of copies, or import the whole list from Excel (CSV). Register students and teachers, lend a book with a due date, then return or renew it; overdue books turn red and the dashboard shows what needs follow-up. Optional fines per day late, a borrowing limit per member, and PDF or CSV reports of the catalogue, overdue books, books on loan, members and lending history. Everything is saved on your own device and works fully offline. Download a backup file to move it to another phone or computer.",
+    "details": "Offline Library is a school library manager by Hadtah. Add every book with title, author, ISBN, category, shelf and number of copies, or import the whole list from Excel (CSV). Register students and teachers, lend a book with a due date, then return or renew it; overdue books turn red and the dashboard shows what needs follow-up. Optional fines per day late, a borrowing limit per member, and PDF or CSV reports of the catalogue, overdue books, books on loan, members and lending history. Everything is saved on your own device and works fully offline. Download a backup file to move it to another phone or computer.",
     "version": "1.0.0",
     "size": "Web app · Android 7.3 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
@@ -167,7 +167,7 @@ window.HADTAH_APPS = [
     "icon": "assets/icons/offline-library.png",
     "featured": true,
     "changelog": [
-      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt as a professional app: books, members, lending and returns, overdue alerts, optional fines, CSV import, PDF reports, backups, dark and light mode, on web, iPhone, Android and Windows." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "First release: books, members, lending and returns, overdue alerts, optional fines, CSV import, PDF reports, backups, dark and light mode, on web, iPhone, Android and Windows." }
     ]
   },
   {
@@ -181,7 +181,7 @@ window.HADTAH_APPS = [
     "name": "Cash Flow",
     "category": "Business",
     "description": "Track money in and money out for your business, see your balance and profit, and print reports. Works offline.",
-    "details": "Cash Flow is the professional version of the Senior One Cash Flow Tracker project. Record each sale, payment or expense with amount, category, date, Cash or Mobile Money, customer or supplier and receipt number. The dashboard shows your balance, money in and out this month against last month, profit and margin, a 6-month chart and the 30-day balance trend. Reports give daily, weekly or monthly summaries with a running balance and where the money came from and went, as PDF or CSV. Set monthly budgets per category and an income target, keep several businesses with their own currency (UGX by default), and import entries from Excel. Everything is saved on your device and works fully offline.",
+    "details": "Cash Flow is a money-in, money-out tracker for small businesses by Hadtah. Record each sale, payment or expense with amount, category, date, Cash or Mobile Money, customer or supplier and receipt number. The dashboard shows your balance, money in and out this month against last month, profit and margin, a 6-month chart and the 30-day balance trend. Reports give daily, weekly or monthly summaries with a running balance and where the money came from and went, as PDF or CSV. Set monthly budgets per category and an income target, keep several businesses with their own currency (UGX by default), and import entries from Excel. Everything is saved on your device and works fully offline.",
     "version": "1.0.0",
     "size": "Web app · Android 7.6 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
@@ -200,7 +200,7 @@ window.HADTAH_APPS = [
     "icon": "assets/icons/cash-flow.png",
     "featured": true,
     "changelog": [
-      { "version": "1.0.0", "date": "2026-11-13", "notes": "Rebuilt as a professional app: money in and out, several businesses, budgets, charts, daily/weekly/monthly reports as PDF or CSV, backups, dark and light mode, on web, iPhone, Android and Windows." }
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "First release: money in and out, several businesses, budgets, charts, daily/weekly/monthly reports as PDF or CSV, backups, dark and light mode, on web, iPhone, Android and Windows." }
     ]
   }
 ];
