@@ -295,3 +295,8 @@ dialog[open]{animation:pop .25s cubic-bezier(.2,.7,.2,1)}
 .page p,.page li{color:var(--ink-2);font-size:16px}
 .page .updated{color:var(--muted);font-size:14px;margin-bottom:28px}
 .page.wide .wrap{max-width:1180px}
+
+/* ---------- device font everywhere (no web fonts) ---------- */
+html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
+button,input,select,textarea,optgroup{font-family:inherit}
+h1,h2,h3,h4,h5,h6,summary,label,dialog,pre,code,kbd,samp,svg,svg text{font-family:inherit}

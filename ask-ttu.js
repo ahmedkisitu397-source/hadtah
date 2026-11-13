@@ -18,9 +18,10 @@
     ".attu-panel{position:fixed;" + side + ":18px;bottom:18px;z-index:2147483001;width:420px;max-width:calc(100vw - 36px);height:min(680px,calc(100vh - 36px));display:flex;flex-direction:column;background:#0a0a0a;color:#f4f4f4;border:1px solid #2a2a2a;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);transform-origin:bottom " + side + ";animation:attuIn .22s cubic-bezier(.2,.7,.2,1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif}" +
     "@keyframes attuIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}" +
     ".attu-panel[hidden]{display:none}" +
+    ".attu-panel *,.attu-btn *{font-family:inherit}" +
     ".attu-head{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 16px;border-bottom:1px solid #222}" +
     ".attu-head b{font-size:15px;flex:1;letter-spacing:-.01em}" +
-    ".attu-head a,.attu-head button{all:unset;cursor:pointer;font-size:12.5px;color:#cfcfcf;padding:7px 10px;border:1px solid #333;border-radius:999px}" +
+    ".attu-head a,.attu-head button{all:unset;cursor:pointer;font-family:inherit;font-size:12.5px;color:#cfcfcf;padding:7px 10px;border:1px solid #333;border-radius:999px}" +
     ".attu-head a:hover,.attu-head button:hover{color:#fff;border-color:#777}" +
     ".attu-body{flex:1;position:relative;background:#0a0a0a}" +
     ".attu-body iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0a0a0a}" +
