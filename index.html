@@ -2,67 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hadtah — Free, tested apps for schools and small businesses</title>
-  <meta name="description" content="Download free desktop apps from Hadtah Technologies Limited, Uganda. Every app is tested and proven to work before it is listed.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hadtah — Simple, dependable apps for Uganda and Africa</title>
+  <meta name="description" content="Hadtah makes affordable, offline-friendly apps for students, teachers, schools, small businesses and families in Uganda and across Africa: Eilpah, TTu, Ennun, Lamma, Offline Library and Cash Flow.">
   <meta name="theme-color" content="#0d9488">
+  <meta property="og:title" content="Hadtah — Simple, dependable apps for Uganda and Africa">
+  <meta property="og:description" content="Hadtah makes affordable, offline-friendly apps for students, teachers, schools, small businesses and families in Uganda and across Africa: Eilpah, TTu, Ennun, Lamma, Offline Library and Cash Flow.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script>
     (function () {
-      var t = localStorage.getItem("hadtah-theme");
+      var t = null; try { t = localStorage.getItem("hadtah-theme"); } catch (e) {}
       if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       document.documentElement.dataset.theme = t;
     })();
   </script>
 </head>
 <body>
-  <a class="skip" href="#apps">Skip to apps</a>
-
+  <a class="skip" href="#main">Skip to content</a>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="#top" aria-label="Hadtah home">
-        <img src="assets/hadtah-logo.svg" alt="" width="36" height="36">
-        <svg class="wordmark" viewBox="-1.5 -1.5 147 23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" role="img" aria-label="HADTAH"><path d="M0 0V20M14 0V20M0 10H14"/><path d="M26 20L33 0L40 20"/><path d="M52 0H57A9 10 0 0 1 57 20H52Z"/><path d="M78 0H92M85 0V20"/><path d="M104 20L111 0L118 20"/><path d="M130 0V20M144 0V20M130 10H144"/></svg>
-      </a>
-      <nav class="nav" aria-label="Main">
-        <a href="#apps">Apps</a>
-        <a href="#install">How to install</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <a class="brand" href="index.html#top" aria-label="Hadtah home"><img src="assets/hadtah-logo.svg" alt="" width="34" height="34">Hadtah</a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="index.html#apps">Apps</a>
+        <a href="schools.html">For schools &amp; businesses</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#updates">Updates</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch light or dark mode">
-        <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main id="main">
+    <section class="hero" id="top">
       <div class="wrap hero-inner">
-        <img class="hero-logo" src="assets/hadtah-logo.svg" alt="Hadtah logo" width="88" height="88">
-        <p class="eyebrow">Hadtah Technologies Limited · Uganda</p>
-        <h1>Free, tested apps for schools and small businesses</h1>
-        <p class="lead">Download desktop apps that work offline. Every app here has been tested on real computers and proven to work before we list it.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#apps">Browse apps</a>
-          <a class="btn btn-ghost" href="#install">How to install</a>
+        <div>
+          <span class="eyebrow"><span class="pulse"></span>Launching 15 November 2026 · Made in Uganda</span>
+          <h1>Technology that works <span class="grad">where you are</span>, even offline.</h1>
+          <p class="lead">Hadtah builds simple, affordable apps that solve everyday problems for students, teachers, schools, small businesses and families in Uganda and across Africa.</p>
+          <div class="hero-cta">
+            <a class="btn btn-brand" href="#apps">Explore the apps</a>
+            <a class="btn btn-outline" href="schools.html">For schools &amp; businesses</a>
+          </div>
+          <ul class="trust">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free apps</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Most work offline</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your data stays on your device</li><li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No ads</li>
+          </ul>
         </div>
-        <ul class="trust">
-          <li><span class="dot"></span>Free to download</li>
-          <li><span class="dot"></span>Works offline</li>
-          <li><span class="dot"></span>Tested before listing</li>
-          <li><span class="dot"></span>No ads, no tracking</li>
-        </ul>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div><div class="orbit o2"></div>
+          <div class="center"><img src="assets/hadtah-logo.svg" alt=""></div>
+          <img class="float" src="assets/icons/eilpah.png" alt="">
+          <img class="float" src="assets/icons/ttu.png" alt="">
+          <img class="float" src="assets/icons/ennun.png" alt="">
+          <img class="float" src="assets/icons/lamma.png" alt="">
+          <img class="float" src="assets/icons/offline-library.png" alt="">
+          <img class="float" src="assets/icons/cash-flow.png" alt="">
+        </div>
       </div>
     </section>
 
     <section id="apps" class="section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Apps</h2>
-          <p class="muted">Pick an app, read what it does, then download the installer.</p>
+        <div class="section-head reveal">
+          <span class="kicker">The apps</span>
+          <h2>Six apps, one goal: make everyday life easier</h2>
+          <p>Open in your browser, add to your iPhone, or download for Android and Windows.</p>
         </div>
         <div class="tools">
           <label class="search">
@@ -78,77 +88,164 @@
       </div>
     </section>
 
-    <section id="install" class="section alt">
+    <section id="showcase" class="section alt">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
+          <span class="kicker">See them working</span>
+          <h2>How each app works</h2>
+          <p>Real screenshots, the steps to get started, and who each app is for.</p>
+        </div>
+        <div id="showcases"></div>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Get started</span>
           <h2>How to install</h2>
-          <p class="muted">Windows apps work on Windows 10 and 11, Android apps on most Android phones. Web apps (TTu, Eilpah) just open in your browser.</p>
-          <div class="install-help">
-            <p><b>Windows:</b> if you see <b>“Windows protected your PC”</b> (SmartScreen), click <b>More info</b>, then <b>Run anyway</b>.</p>
-            <p><b>Android:</b> when you open the APK, your phone may ask you to <b>allow installs from this source</b>. Tap <b>Settings</b>, turn it on, go back and tap <b>Install</b>.</p>
-            <p class="muted">Both warnings are normal for new apps that are not yet signed by a store.</p>
+          <p>Pick the way that suits your device. The web apps need nothing installed.</p>
+        </div>
+        <div class="install-grid">
+          <div class="install-card reveal"><h3>📱 Android</h3><ol>
+            <li>Press <b>Android APK</b> on the app. The file goes to your Downloads.</li>
+            <li>Open the file. If asked, tap <b>Settings</b> and turn on <b>Allow from this source</b>.</li>
+            <li>Go back, tap <b>Install</b>, then <b>Open</b>.</li></ol>
+            <div class="callout">This warning is normal for apps that are not from the Play Store.</div></div>
+          <div class="install-card reveal"><h3>💻 Windows 10 / 11</h3><ol>
+            <li>Press <b>Windows installer</b>. The setup file goes to Downloads.</li>
+            <li>Double-click it. If you see <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>.</li>
+            <li>Click <b>Next</b>, <b>Install</b>, <b>Finish</b>, then open it from the desktop icon.</li></ol>
+            <div class="callout">You can copy installers to a flash drive for computers with no internet.</div></div>
+          <div class="install-card reveal"><h3>🌐 iPhone &amp; browser</h3><ol>
+            <li>Press <b>Open on iPhone</b> (or <b>Open</b> on a computer).</li>
+            <li>In Safari, tap <b>Share</b>, then <b>Add to Home Screen</b>.</li>
+            <li>Open it from your Home Screen like any app.</li></ol>
+            <div class="callout">Offline Library and Cash Flow keep working offline after the first visit.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section alt">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="reveal">
+            <span class="kicker">About Hadtah</span>
+            <h2>Solving real problems with technology people can afford</h2>
+            <p>Hadtah began in a classroom. Our founder, <b>Kisitu Ahmed</b>, is a teacher in Kakiri, Wakiso, Uganda. Every day he saw problems that simple software could solve: libraries run on paper, small shops that did not know their profit, students losing hours to their phones, and families losing money to scam messages.</p>
+            <p>So we build apps for those problems, and we build them for real conditions: low-cost phones, shared computers, expensive data and power cuts. Most of our apps work with no internet at all, and they keep your information on your own device.</p>
+            <p>The name comes from the Aramaic <i>hadta</i>, meaning “new” or “renewed”.</p>
+            <div class="founder"><div class="av">KA</div><div><b>Kisitu Ahmed</b><span class="muted">Founder · Teacher, Kakiri, Wakiso, Uganda</span></div></div>
+          </div>
+          <div class="mv reveal">
+            <div class="mv-card"><h3>Our mission</h3><p>To solve real problems in our communities with affordable, offline-friendly technology that works for people in Uganda and across Africa.</p></div>
+            <div class="mv-card"><h3>Our vision</h3><p>An Africa where every learner, teacher, school and small business has simple, dependable digital tools, whether or not they have fast internet, a new phone or money to spare.</p></div>
           </div>
         </div>
-        <ol class="steps">
-          <li><span class="num">1</span><div><h3>Download</h3><p>Press <b>Download</b> on the app you want. The setup file goes to your <b>Downloads</b> folder. You can also copy it to a flash drive to install on PCs with no internet.</p></div></li>
-          <li><span class="num">2</span><div><h3>Open the setup file</h3><p>Double-click the file. If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This appears for new apps that are not yet signed; it is normal.</p></div></li>
-          <li><span class="num">3</span><div><h3>Install</h3><p>Click <b>Next</b>, tick <b>Create a desktop shortcut</b>, then <b>Install</b> and <b>Finish</b>.</p></div></li>
-          <li><span class="num">4</span><div><h3>Use it</h3><p>Double-click the new desktop icon. To remove an app later, go to <b>Settings › Apps › Installed apps</b> and choose <b>Uninstall</b>.</p></div></li>
+        <div class="values">
+          <div class="value reveal"><div class="vi">⚡</div><h4>Works offline</h4><p>Built for power cuts and costly data. Most apps need no internet after you install them.</p></div>
+          <div class="value reveal"><div class="vi">💸</div><h4>Affordable</h4><p>Our apps are free. Where something costs money, we say so clearly up front.</p></div>
+          <div class="value reveal"><div class="vi">🔒</div><h4>Private by design</h4><p>Your records stay on your device. No ads, and no selling your information.</p></div>
+          <div class="value reveal"><div class="vi">🤝</div><h4>Made for here</h4><p>Ugandan curriculum, UGX, Mobile Money and local scams, designed with local users in mind.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="updates" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Updates &amp; news</span>
+          <h2>What’s new at Hadtah</h2>
+        </div>
+        <ol class="timeline">
+          <li class="big reveal"><time datetime="2026-11-15">15 November 2026</time><h3>Hadtah launches</h3><p>Hadtah opens to the public with six apps: Eilpah, TTu, Ennun, Lamma, Offline Library and Cash Flow. Use them in your browser and on iPhone, or download them for Android and Windows. Ask TTu is now built into this website and the apps.</p></li>
+          <li class="reveal"><time datetime="2026-11-14">14 November 2026</time><h3>New look for every app</h3><p>New app icons, a more polished design in each app’s own colours, and the system font of your device for clearer reading.</p></li>
+          <li class="reveal"><time datetime="2026-11-13">13 November 2026</time><h3>Offline Library and Cash Flow rebuilt</h3><p>Both Senior One projects were rebuilt as full apps with PDF reports, backups and dark mode, on web, iPhone, Android and Windows.</p></li>
         </ol>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="wrap about">
-        <div>
-          <h2>About Hadtah</h2>
-          <p>Hadtah Technologies Limited is a Ugandan software company. The name comes from the Aramaic <i>hadta</i>, meaning “new” or “renewed”. We build simple, useful software for learners, teachers, schools and small businesses, and we share tested desktop apps here for free.</p>
-          <p>We are also the makers of <a href="https://eilpah.vercel.app" target="_blank" rel="noopener">Eilpah</a>, a learning app for students and teachers.</p>
+    <section id="faq" class="section alt">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">FAQ</span>
+          <h2>Questions people ask</h2>
         </div>
-        <div class="about-card">
-          <img src="assets/hadtah-logo.svg" alt="" width="64" height="64">
-          <h3>Our promise</h3>
-          <ul class="ticks">
-            <li>Every app is tested on real Windows PCs before it is listed.</li>
-            <li>Each listing shows the date it was last tested.</li>
-            <li>No ads, no trackers, no hidden fees.</li>
-          </ul>
+        <div class="faq">
+          <details class="reveal"><summary>How do I install an Android APK?</summary><div class="ans"><ol>
+            <li>Press <b>Android APK</b> under the app. The file is saved to your Downloads.</li>
+            <li>Open the file from your notifications or the Files app.</li>
+            <li>If your phone says installs from this source are blocked, tap <b>Settings</b>, turn on <b>Allow from this source</b>, and go back.</li>
+            <li>Tap <b>Install</b>, then <b>Open</b>.</li></ol>
+            <p style="margin-top:10px">This is normal for apps that do not come from the Play Store. Only install APKs downloaded from this website.</p></div></details>
+          <details class="reveal"><summary>Windows says “Windows protected your PC”. Is it safe?</summary><div class="ans"><p>Yes. This SmartScreen message appears for new apps that do not yet have a paid code-signing certificate. Click <b>More info</b>, then <b>Run anyway</b>, and continue the installer. Download installers only from this website.</p></div></details>
+          <details class="reveal"><summary>How do I put an app on my iPhone?</summary><div class="ans"><ol>
+            <li>Press <b>Open on iPhone</b>. It opens the app in Safari.</li>
+            <li>Tap the <b>Share</b> button (the square with an arrow).</li>
+            <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li></ol>
+            <p style="margin-top:10px">The app now has its own icon on your Home Screen. Ennun and Lamma are Android and Windows apps.</p></div></details>
+          <details class="reveal"><summary>What happens to my data? Is it private?</summary><div class="ans"><p>Ennun, Lamma, Offline Library and Cash Flow save everything on your own phone or computer. Nothing is sent to us. Use the backup option in the app to keep a copy. TTu and Eilpah are online services: they keep your account and what you need to use them, and nothing is sold or shared for advertising. See our <a href="privacy.html">Privacy page</a>.</p></div></details>
+          <details class="reveal"><summary>Do the apps cost money?</summary><div class="ans"><p>Eilpah, Ennun, Lamma, Offline Library and Cash Flow are free. TTu is free for 15 questions a day and 20 PDF downloads; after that there is an optional weekly plan, shown clearly in TTu before you pay.</p></div></details>
+          <details class="reveal"><summary>Do I need internet?</summary><div class="ans"><p>Not for Ennun, Lamma, Offline Library or Cash Flow once they are installed or opened once. TTu and Eilpah need internet. The <b>Ask TTu</b> button in each app needs internet and shows “Needs internet” when you are offline.</p></div></details>
+          <details class="reveal"><summary>What is the “Ask TTu” button?</summary><div class="ans"><p>It opens TTu, our question-and-answer app, in a panel without leaving the page. If sign-in does not work inside the panel on your browser, use <b>Open in new tab</b>.</p></div></details>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section alt">
-      <div class="wrap contact">
-        <div>
-          <h2>Contact</h2>
-          <p class="muted">Found a problem, or want an app made for your school or business? Write to us.</p>
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="contact">
+          <div class="reveal">
+            <span class="kicker">Contact</span>
+            <h2>Talk to us</h2>
+            <p class="muted" style="font-size:17px">Found a problem, have an idea, or want an app for your school or business? Write to us.</p>
+            <a class="mail-card" href="mailto:support@hadtah.com"><span class="vi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b id="contactEmail">support@hadtah.com</b><br><span class="pending">Live once hadtah.com email forwarding is set up</span></span></a>
+          </div>
+          <form class="contact-form reveal" id="contactForm">
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+            <label>Message<textarea name="message" rows="5" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Write the email</button>
+            <p class="note muted">This opens your email app with the message ready to send to support@hadtah.com. Nothing is sent from this website.</p>
+          </form>
         </div>
-        <form class="contact-form" id="contactForm">
-          <label>Your name<input name="name" required autocomplete="name"></label>
-          <label>Your email<input name="email" type="email" required autocomplete="email"></label>
-          <label>Message<textarea name="message" rows="4" required></textarea></label>
-          <button class="btn btn-primary" type="submit">Send message</button>
-          <p class="note muted">This opens your email app with the message ready to send to <a id="contactEmail" href="mailto:hello@hadtah.com">hello@hadtah.com</a>.</p>
-        </form>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="band reveal">
+          <div><h2>Running a school or a small business?</h2><p>See which Hadtah apps fit, and how to set them up on many devices with no internet.</p></div>
+          <div class="hero-cta" style="margin:0"><a class="btn btn-brand" href="schools.html">For schools &amp; businesses</a><a class="btn btn-outline" href="#contact">Contact us</a></div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
-      <div class="brand small">
-        <img src="assets/hadtah-logo.svg" alt="" width="28" height="28">
-        <svg class="wordmark" viewBox="-1.5 -1.5 147 23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M0 0V20M14 0V20M0 10H14"/><path d="M26 20L33 0L40 20"/><path d="M52 0H57A9 10 0 0 1 57 20H52Z"/><path d="M78 0H92M85 0V20"/><path d="M104 20L111 0L118 20"/><path d="M130 0V20M144 0V20M130 10H144"/></svg>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html#top"><img src="assets/hadtah-logo.svg" alt="" width="34" height="34">Hadtah</a>
+          <p class="muted" style="margin-top:12px;max-width:340px;font-size:14.5px">Affordable, offline-friendly apps that solve everyday problems, made in Uganda for Uganda and Africa.</p>
+        </div>
+        <div><h4>Apps</h4><ul>
+          <li><a href="index.html#app-eilpah">Eilpah</a></li><li><a href="index.html#app-ttu">TTu</a></li><li><a href="index.html#app-ennun">Ennun</a></li>
+          <li><a href="index.html#app-lamma">Lamma</a></li><li><a href="index.html#app-offline-library">Offline Library</a></li><li><a href="index.html#app-cash-flow">Cash Flow</a></li></ul></div>
+        <div><h4>Hadtah</h4><ul>
+          <li><a href="index.html#about">About &amp; mission</a></li><li><a href="schools.html">For schools &amp; businesses</a></li><li><a href="index.html#updates">Updates</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+        <div><h4>Help</h4><ul>
+          <li><a href="index.html#install">How to install</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
       </div>
-      <p class="muted">© 2026 Hadtah Technologies Limited · Uganda · Makers of <a href="https://eilpah.vercel.app" target="_blank" rel="noopener">Eilpah</a></p>
+      <div class="legal"><span>© 2026 Hadtah</span><span>Kakiri, Wakiso, Uganda · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span></div>
     </div>
   </footer>
 
-  <dialog id="details" aria-labelledby="dTitle">
-    <div class="dialog-body" id="detailsBody"></div>
-  </dialog>
-
+  <dialog id="details" aria-labelledby="dTitle"><div class="dialog-body" id="detailsBody"></div></dialog>
+  <dialog id="lightbox" aria-label="Screenshot"><button type="button" class="icon-btn close" aria-label="Close" data-close><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img alt=""><p></p></dialog>
   <script src="apps.js"></script>
   <script src="app.js"></script>
+  <script src="site.js"></script>
+  <script src="ask-ttu.js"></script>
 </body>
 </html>

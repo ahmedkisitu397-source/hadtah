@@ -76,6 +76,55 @@
     return parts.length ? parts.join("") : '<span class="btn ' + cls + '" aria-disabled="true">Coming soon</span>';
   }
 
+  function accentStyle(a) {
+    var c = a.accent || "#14b8a6";
+    return "--accent:" + esc(c) + ";--accent-grad:linear-gradient(135deg," + esc(c) + "," + esc(c) + "cc)";
+  }
+  function listItems(arr) { return (arr || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); }
+
+  /* ---- Showcases: screenshots, how it works, features, who benefits ---- */
+  var sc = $("#showcases");
+  if (sc) {
+    sc.innerHTML = apps.map(function (a, i) {
+      var shots = a.screenshots || [];
+      var gal = shots.length ? '<figure class="gallery" data-gal="' + esc(a.id) + '">' +
+        '<div class="main" role="button" tabindex="0" aria-label="Enlarge screenshot"><img src="' + esc(shots[0].src) + '" alt="' + esc(shots[0].alt) + '" width="1120" height="700"></div>' +
+        (shots.length > 1 ? '<div class="thumbs">' + shots.map(function (s2, j) {
+          return '<button type="button" data-shot="' + j + '" aria-label="' + esc(s2.alt) + '" aria-current="' + (j === 0) + '"><img src="' + esc(s2.src) + '" alt="" loading="lazy"></button>';
+        }).join("") + "</div>" : "") +
+        '<figcaption>' + esc(shots[0].alt) + "</figcaption></figure>" : "";
+      return '<article class="showcase reveal' + (i % 2 ? " flip" : "") + '" id="app-' + esc(a.id) + '" style="' + accentStyle(a) + '">' + gal +
+        "<div>" +
+        '<div class="sc-head"><img src="' + esc(a.icon) + '" alt="" loading="lazy"><div><h3>' + esc(a.name) + '</h3><div class="cat">' + esc(a.category) + "</div></div></div>" +
+        '<p class="sc-tag">' + esc(a.tagline || a.description) + "</p>" +
+        '<div class="sc-cols"><div class="sc-block"><h4>How it works</h4><ol class="how">' + listItems(a.how) + "</ol></div>" +
+        '<div class="sc-block"><h4>Key features</h4><ul class="mini-feats">' + listItems(a.features) + "</ul></div></div>" +
+        '<div class="sc-block" style="margin-bottom:22px"><h4>Who benefits</h4><ul class="who">' + listItems(a.benefits) + "</ul></div>" +
+        '<div class="sc-actions">' + downloadBtn(a, "btn-sm") + '<button type="button" class="btn btn-ghost btn-sm" data-open="' + esc(a.id) + '">Details</button></div>' +
+        iosTip(a) + "</div></article>";
+    }).join("");
+    sc.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-shot]");
+      var g = e.target.closest("[data-gal]");
+      if (t && g) {
+        var a = apps.filter(function (x) { return x.id === g.dataset.gal; })[0], s3 = a.screenshots[+t.dataset.shot];
+        var img = g.querySelector(".main img"); img.src = s3.src; img.alt = s3.alt;
+        g.querySelector("figcaption").textContent = s3.alt;
+        g.querySelectorAll("[data-shot]").forEach(function (b) { b.setAttribute("aria-current", String(b === t)); });
+        return;
+      }
+      var m = e.target.closest(".main"); if (m) { var im = m.querySelector("img"); openLightbox(im.src, im.alt); return; }
+      var d = e.target.closest("[data-open]"); if (d) openDetails(d.dataset.open, true);
+    });
+    sc.addEventListener("keydown", function (e) { var m = e.target.closest(".main"); if (m && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); var im = m.querySelector("img"); openLightbox(im.src, im.alt); } });
+  }
+  var lb = $("#lightbox");
+  function openLightbox(src, alt) {
+    if (!lb) return; lb.querySelector("img").src = src; lb.querySelector("img").alt = alt || ""; lb.querySelector("p").textContent = alt || "";
+    if (!lb.open) lb.showModal();
+  }
+  if (lb) lb.addEventListener("click", function (e) { if (e.target === lb || e.target.closest("[data-close]")) lb.close(); });
+
   /* ---- Category chips ---- */
   var cats = ["All"];
   apps.forEach(function (a) { if (a.category && cats.indexOf(a.category) < 0) cats.push(a.category); });
@@ -100,18 +149,22 @@
   function render() {
     var list = apps.filter(matches).sort(function (x, y) { return (y.featured ? 1 : 0) - (x.featured ? 1 : 0); });
     grid.innerHTML = list.map(function (a) {
-      return '<article class="card">' +
-        '<div class="card-top"><img class="app-icon" src="' + esc(a.icon || "assets/hadtah-logo.svg") + '" alt="" width="56" height="56" loading="lazy">' +
+      var feats = (a.features || []).slice(0, 3).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
+      return '<article class="card reveal" style="' + accentStyle(a) + '">' +
+        '<div class="card-top"><img class="app-icon" src="' + esc(a.icon || "assets/hadtah-logo.svg") + '" alt="" width="60" height="60" loading="lazy">' +
         '<div><h3>' + esc(a.name) + '</h3><div class="cat">' + esc(a.category) + "</div></div></div>" +
-        "<p>" + esc(a.description) + "</p>" +
-        '<div class="badges">' + badges(a) + "</div>" +
-        '<div class="meta"><span>Version <b>' + esc(a.version || "1.0") + "</b></span><span>Size <b>" + esc(size(a)) + "</b></span><span><b>" + esc(platforms(a)) + "</b></span></div>" +
+        (a.tagline ? '<p class="tagline">' + esc(a.tagline) + "</p>" : "") +
+        '<p class="desc">' + esc(a.description) + "</p>" +
+        (feats ? '<ul class="mini-feats">' + feats + "</ul>" : "") +
+        '<div class="meta"><span>v' + esc(a.version || "1.0") + "</span><span>" + esc(size(a)) + "</span><span>" + esc(platforms(a)) + "</span></div>" +
         (a.note ? '<p class="card-note">' + esc(a.note) + "</p>" : "") +
         '<div class="card-actions">' + downloadBtn(a, "btn-sm") +
-        '<button type="button" class="btn btn-ghost btn-sm" data-open="' + esc(a.id) + '">Details</button></div>' +
+        '<button type="button" class="btn btn-ghost btn-sm" data-open="' + esc(a.id) + '">Details</button>' +
+        '<a class="btn btn-ghost btn-sm" href="#app-' + esc(a.id) + '">How it works</a></div>' +
         iosTip(a) +
         "</article>";
     }).join("");
+    if (window.HadtahReveal) window.HadtahReveal();
     empty.hidden = list.length > 0;
     count.textContent = list.length === apps.length ? apps.length + " apps" : "Showing " + list.length + " of " + apps.length + " apps";
   }
@@ -128,12 +181,16 @@
     body.innerHTML =
       '<button type="button" class="icon-btn close" aria-label="Close" data-close>' +
       '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
-      '<div class="d-head"><img class="app-icon" src="' + esc(a.icon || "assets/hadtah-logo.svg") + '" alt="" width="68" height="68">' +
+      '<div class="d-head" style="' + accentStyle(a) + '"><img class="app-icon" src="' + esc(a.icon || "assets/hadtah-logo.svg") + '" alt="" width="68" height="68">' +
       '<div><h2 id="dTitle">' + esc(a.name) + '</h2><div class="badges">' + badges(a) + "</div></div></div>" +
       "<p>" + esc(a.description) + "</p>" +
       '<div class="d-facts"><div>Version<b>' + esc(a.version || "1.0") + "</b></div><div>Size<b>" + esc(size(a)) + "</b></div>" +
       "<div>Works on<b>" + esc(platforms(a)) + "</b></div><div>Last tested<b>" + (a.tested_on ? fmtDate(a.tested_on) : "Testing now") + "</b></div></div>" +
+      ((a.screenshots || []).length ? '<div class="d-sec"><h3>Screenshots</h3><div class="d-gallery">' + a.screenshots.map(function (x) { return '<button type="button" data-zoom="' + esc(x.src) + '" data-alt="' + esc(x.alt) + '"><img src="' + esc(x.src) + '" alt="' + esc(x.alt) + '" loading="lazy"></button>'; }).join("") + "</div></div>" : "") +
       '<div class="d-sec"><h3>What it does</h3><p>' + esc(a.details || a.description) + "</p></div>" +
+      ((a.how || []).length ? '<div class="d-sec"><h3>How it works</h3><ol>' + listItems(a.how) + "</ol></div>" : "") +
+      ((a.features || []).length ? '<div class="d-sec"><h3>Key features</h3><ul>' + listItems(a.features) + "</ul></div>" : "") +
+      ((a.benefits || []).length ? '<div class="d-sec"><h3>Who benefits</h3><ul class="who" style="padding:0">' + listItems(a.benefits) + "</ul></div>" : "") +
       installHelp(a) +
       '<div class="d-sec"><h3>What’s new</h3><ul class="changelog">' + log + "</ul></div>" +
       '<div class="d-actions">' + downloadBtn(a, "") + '<button type="button" class="btn btn-ghost" data-close>Close</button></div>' +
@@ -176,6 +233,7 @@
     if (dialog.open) dialog.close();
   }
   dialog.addEventListener("click", function (e) {
+    var z = e.target.closest("[data-zoom]"); if (z) { openLightbox(z.dataset.zoom, z.dataset.alt); return; }
     if (e.target === dialog || e.target.closest("[data-close]")) closeDetails();
   });
   dialog.addEventListener("close", function () {
@@ -186,22 +244,6 @@
     if (m) openDetails(decodeURIComponent(m[1]), false); else closeDetails();
   }
   window.addEventListener("popstate", fromHash);
-
-  /* ---- Theme ---- */
-  $("#themeToggle").addEventListener("click", function () {
-    var next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("hadtah-theme", next);
-  });
-
-  /* ---- Contact (opens the visitor's email app; no server, no tracking) ---- */
-  $("#contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var f = e.target, to = $("#contactEmail").textContent.trim();
-    var subject = "Message from " + f.name.value + " (Hadtah website)";
-    var text = f.message.value + "\n\nFrom: " + f.name.value + " <" + f.email.value + ">";
-    location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
-  });
 
   render();
   fromHash();

@@ -97,3 +97,19 @@ and the downloads don't count against your website hosting.**
   `[{ "label": "Android APK", "url": "https://…/App.apk", "size": "4 MB", "kind": "android" }, { "label": "Windows installer", "url": "https://…/Setup.exe", "size": "120 MB", "kind": "windows" }]`
 - `open_url` + `open_label`: for web apps, shows an **Open** button (opens in a new tab) instead of Download.
 - `note`: a short line shown on the card, e.g. "Test mode".
+
+## Showcase fields (added Nov 2026)
+Each app block in `apps.js` can also have:
+- `tagline`: one short line under the name.
+- `accent`: the app's colour (hex) used for its card glow and step numbers.
+- `how`: 3–4 short "How it works" steps.
+- `features`: key features (the first 3 also show on the card).
+- `benefits`: who the app helps.
+- `screenshots`: `[{ "src": "assets/shots/<file>.webp", "alt": "what it shows" }]`, 2–3 per app.
+
+## Ask TTu
+`ask-ttu.js` adds the floating "Ask TTu" button and panel. Its address is `TTU_URL` at the top of that file
+(switch it to `https://ttu.hadtah.com` once that domain is live). The same file is used in the apps.
+
+## Pages
+`index.html`, `schools.html`, `privacy.html`, `terms.html`. `site.js` holds the theme switch, menu and contact form.
