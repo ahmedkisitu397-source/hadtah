@@ -32,6 +32,8 @@
     els.forEach(function (e) { io.observe(e); });
   }
   window.HadtahReveal = reveal; reveal();
+  var foot = document.querySelector(".footer");
+  if (foot && "IntersectionObserver" in window) new IntersectionObserver(function (es) { document.documentElement.classList.toggle("foot-in", es[0].isIntersecting); }).observe(foot);
   var f = $("#contactForm");
   if (f) f.addEventListener("submit", function (e) {
     e.preventDefault();
