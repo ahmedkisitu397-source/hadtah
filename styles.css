@@ -174,3 +174,16 @@ dialog::backdrop { background: rgb(5 12 20 / .55); backdrop-filter: blur(3px); }
 .d-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.4rem; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Multi-download / web-app cards */
+.btn-outline { background: transparent; color: var(--teal-600); border-color: var(--teal-600); }
+.btn-outline:hover { background: rgb(13 148 136 / .08); }
+.btn small { font-weight: 500; opacity: .8; margin-left: .25rem; }
+.card-actions { flex-wrap: wrap; }
+.card-actions .btn { flex: 1 1 auto; white-space: nowrap; }
+.card-note { font-size: .82rem; color: var(--muted, #6b7280); margin: 0 0 .5rem; }
+.d-actions { flex-wrap: wrap; }
+.d-sec h4 { margin: .6rem 0 .2rem; font-size: .95rem; }
+.install-help { max-width: 760px; margin: 1rem auto 0; padding: .9rem 1.1rem; border-radius: 12px; background: rgb(245 158 11 / .1); border: 1px solid rgb(245 158 11 / .3); text-align: left; font-size: .95rem; }
+.install-help p { margin: .3rem 0; }
+.card .card-note { flex: 0 0 auto; font-size: .82rem; }

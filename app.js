@@ -14,7 +14,9 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  function isOpen(a) { return !!(a.open_url && String(a.status || "").toLowerCase() !== "coming soon"); }
   function hasDownload(a) {
+    if (isOpen(a)) return true;
     var url = (a.download_url || "").trim();
     var soon = String(a.status || "").toLowerCase() === "coming soon";
     return url !== "" && url !== "#" && !soon;
@@ -35,7 +37,17 @@
     if (a.featured) out += '<span class="badge feat">★ Featured</span>';
     return out;
   }
+  var DL_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
+  var OPEN_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
   function downloadBtn(a, cls) {
+    if (isOpen(a)) {
+      return '<a class="btn btn-primary ' + cls + '" href="' + esc(a.open_url) + '" target="_blank" rel="noopener">' + OPEN_ICON + esc(a.open_label || "Open") + "</a>";
+    }
+    if (hasDownload(a) && Array.isArray(a.downloads) && a.downloads.length) {
+      return a.downloads.map(function (d, i) {
+        return '<a class="btn ' + (i === 0 ? "btn-primary " : "btn-outline ") + cls + '" href="' + esc(d.url) + '" rel="noopener" download>' + DL_ICON + esc(d.label) + (d.size ? ' <small>' + esc(d.size) + "</small>" : "") + "</a>";
+      }).join("");
+    }
     if (hasDownload(a)) {
       return '<a class="btn btn-primary ' + cls + '" href="' + esc(a.download_url) + '" rel="noopener" download>' +
         '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>';
@@ -73,6 +85,7 @@
         "<p>" + esc(a.description) + "</p>" +
         '<div class="badges">' + badges(a) + "</div>" +
         '<div class="meta"><span>Version <b>' + esc(a.version || "1.0") + "</b></span><span>Size <b>" + esc(size(a)) + "</b></span><span><b>" + esc(platforms(a)) + "</b></span></div>" +
+        (a.note ? '<p class="card-note">' + esc(a.note) + "</p>" : "") +
         '<div class="card-actions">' + downloadBtn(a, "btn-sm") +
         '<button type="button" class="btn btn-ghost btn-sm" data-open="' + esc(a.id) + '">Details</button></div>' +
         "</article>";
@@ -99,16 +112,30 @@
       '<div class="d-facts"><div>Version<b>' + esc(a.version || "1.0") + "</b></div><div>Size<b>" + esc(size(a)) + "</b></div>" +
       "<div>Works on<b>" + esc(platforms(a)) + "</b></div><div>Last tested<b>" + (a.tested_on ? fmtDate(a.tested_on) : "Testing now") + "</b></div></div>" +
       '<div class="d-sec"><h3>What it does</h3><p>' + esc(a.details || a.description) + "</p></div>" +
-      '<div class="d-sec"><h3>How to install</h3><ol>' +
-      "<li>Press <b>Download</b>. The setup file is saved in your Downloads folder.</li>" +
-      "<li>Double-click the setup file.</li>" +
-      "<li>Click <b>Next</b>, tick <b>Create a desktop shortcut</b>, then <b>Install</b> and <b>Finish</b>.</li>" +
-      "<li>Open " + esc(a.name) + " from the desktop icon or the Start menu.</li></ol>" +
-      '<div class="callout">If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This is normal for new apps that are not yet signed.</div></div>' +
+      installHelp(a) +
       '<div class="d-sec"><h3>What’s new</h3><ul class="changelog">' + log + "</ul></div>" +
       '<div class="d-actions">' + downloadBtn(a, "") + '<button type="button" class="btn btn-ghost" data-close>Close</button></div>';
     if (!dialog.open) dialog.showModal();
     if (push && location.hash !== "#app/" + a.id) history.pushState(null, "", "#app/" + a.id);
+  }
+  function installHelp(a) {
+    if (isOpen(a)) {
+      return '<div class="d-sec"><h3>How to use</h3><ol>' +
+        "<li>Press <b>" + esc(a.open_label || "Open") + "</b>. It opens in your browser; nothing to install.</li>" +
+        "<li>To keep it like an app, use your browser menu: <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>" +
+        (a.note ? '<div class="callout">' + esc(a.note) + "</div>" : "") + "</div>";
+    }
+    var android = (a.downloads || []).some(function (d) { return d.kind === "android"; });
+    return '<div class="d-sec"><h3>How to install</h3>' +
+      (android ? "<h4>Android</h4><ol>" +
+        "<li>Press <b>Android APK</b>. The file is saved in your Downloads.</li>" +
+        "<li>Open the file. If your phone asks, tap <b>Settings</b> and turn on <b>Allow from this source</b>, then go back and tap <b>Install</b>.</li>" +
+        "<li>Open " + esc(a.name) + " from your apps.</li></ol><h4>Windows</h4>" : "") +
+      "<ol><li>Press <b>" + (android ? "Windows installer" : "Download") + "</b>. The setup file is saved in your Downloads folder.</li>" +
+      "<li>Double-click the setup file.</li>" +
+      "<li>Click <b>Next</b>, then <b>Install</b> and <b>Finish</b>.</li>" +
+      "<li>Open " + esc(a.name) + " from the desktop icon or the Start menu.</li></ol>" +
+      '<div class="callout">If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This is normal for new apps that are not yet signed.</div></div>';
   }
   function closeDetails() {
     if (dialog.open) dialog.close();

@@ -90,3 +90,10 @@ and the downloads don't count against your website hosting.**
   placeholder: set up the mailbox (or Namecheap's free email forwarding to your own inbox), or change the address
   in `index.html` (search for `hello@hadtah.com`).
 - `admin.html` has nothing secret in it, but you can delete it from the online copy if you prefer.
+
+### Extra fields (optional)
+
+- `downloads`: a list of buttons instead of one `download_url`, e.g.
+  `[{ "label": "Android APK", "url": "https://…/App.apk", "size": "4 MB", "kind": "android" }, { "label": "Windows installer", "url": "https://…/Setup.exe", "size": "120 MB", "kind": "windows" }]`
+- `open_url` + `open_label`: for web apps, shows an **Open** button (opens in a new tab) instead of Download.
+- `note`: a short line shown on the card, e.g. "Test mode".
