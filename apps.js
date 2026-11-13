@@ -11,10 +11,10 @@
   (The "Ask TTu" panel address is TTU_URL at the top of ask-ttu.js.)
 */
 var HADTAH_WEB = {
-  ttu: "https://ttu.hadtah.workers.dev",
-  eilpah: "https://eilpah.hadtah.workers.dev",
-  library: "https://offline-library.hadtah.workers.dev",
-  cashflow: "https://cash-flow.hadtah.workers.dev"
+  ttu: "https://ttu.hadtah.com",
+  eilpah: "https://eilpah.hadtah.com",
+  library: "https://library.hadtah.com",
+  cashflow: "https://cashflow.hadtah.com"
 };
 
 window.HADTAH_APPS = [

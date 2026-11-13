@@ -3,7 +3,7 @@
    To move TTu to its own domain later, change TTU_URL below (and add the domain to frame-src where a CSP lists it). */
 (function () {
   "use strict";
-  var TTU_URL = "https://ttu.hadtah.workers.dev/";
+  var TTU_URL = "https://ttu.hadtah.com/";
   if (window.__askTTu) return; window.__askTTu = true;
   var opt = window.ASK_TTU_OPTIONS || {};
   var side = opt.side === "left" ? "left" : "right";
