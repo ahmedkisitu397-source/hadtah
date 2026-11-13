@@ -40,19 +40,20 @@
   var DL_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
   var OPEN_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
   function downloadBtn(a, cls) {
+    var parts = [];
     if (isOpen(a)) {
-      return '<a class="btn btn-primary ' + cls + '" href="' + esc(a.open_url) + '" target="_blank" rel="noopener">' + OPEN_ICON + esc(a.open_label || "Open") + "</a>";
+      parts.push('<a class="btn btn-primary ' + cls + '" href="' + esc(a.open_url) + '" target="_blank" rel="noopener">' + OPEN_ICON + esc(a.open_label || "Open") + "</a>");
     }
-    if (hasDownload(a) && Array.isArray(a.downloads) && a.downloads.length) {
-      return a.downloads.map(function (d, i) {
-        return '<a class="btn ' + (i === 0 ? "btn-primary " : "btn-outline ") + cls + '" href="' + esc(d.url) + '" rel="noopener" download>' + DL_ICON + esc(d.label) + (d.size ? ' <small>' + esc(d.size) + "</small>" : "") + "</a>";
-      }).join("");
+    var list = Array.isArray(a.downloads) ? a.downloads : [];
+    if (list.length && String(a.status || "").toLowerCase() !== "coming soon") {
+      list.forEach(function (d, i) {
+        var kind = (!isOpen(a) && i === 0) ? "btn-primary " : "btn-outline ";
+        parts.push('<a class="btn ' + kind + cls + '" href="' + esc(d.url) + '" rel="noopener" download>' + DL_ICON + esc(d.label) + (d.size ? ' <small>' + esc(d.size) + "</small>" : "") + "</a>");
+      });
+    } else if (!isOpen(a) && hasDownload(a)) {
+      parts.push('<a class="btn btn-primary ' + cls + '" href="' + esc(a.download_url) + '" rel="noopener" download>' + DL_ICON + "Download</a>");
     }
-    if (hasDownload(a)) {
-      return '<a class="btn btn-primary ' + cls + '" href="' + esc(a.download_url) + '" rel="noopener" download>' +
-        '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>';
-    }
-    return '<span class="btn ' + cls + '" aria-disabled="true">Coming soon</span>';
+    return parts.length ? parts.join("") : '<span class="btn ' + cls + '" aria-disabled="true">Coming soon</span>';
   }
 
   /* ---- Category chips ---- */
@@ -119,23 +120,30 @@
     if (push && location.hash !== "#app/" + a.id) history.pushState(null, "", "#app/" + a.id);
   }
   function installHelp(a) {
-    if (isOpen(a)) {
-      return '<div class="d-sec"><h3>How to use</h3><ol>' +
-        "<li>Press <b>" + esc(a.open_label || "Open") + "</b>. It opens in your browser; nothing to install.</li>" +
-        "<li>To keep it like an app, use your browser menu: <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>" +
-        (a.note ? '<div class="callout">' + esc(a.note) + "</div>" : "") + "</div>";
-    }
     var android = (a.downloads || []).some(function (d) { return d.kind === "android"; });
-    return '<div class="d-sec"><h3>How to install</h3>' +
-      (android ? "<h4>Android</h4><ol>" +
+    var hasDl = Array.isArray(a.downloads) && a.downloads.length;
+    var html = '<div class="d-sec"><h3>' + (isOpen(a) && hasDl ? "How to use or install" : isOpen(a) ? "How to use" : "How to install") + "</h3>";
+    if (isOpen(a)) {
+      html += (hasDl ? "<h4>In your browser</h4>" : "") + "<ol>" +
+        "<li>Press <b>" + esc(a.open_label || "Open") + "</b>. It opens in your browser; nothing to install.</li>" +
+        "<li>To keep it like an app, use your browser menu: <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>";
+    }
+    if (hasDl && android) {
+      html += "<h4>Android</h4><ol>" +
         "<li>Press <b>Android APK</b>. The file is saved in your Downloads.</li>" +
         "<li>Open the file. If your phone asks, tap <b>Settings</b> and turn on <b>Allow from this source</b>, then go back and tap <b>Install</b>.</li>" +
-        "<li>Open " + esc(a.name) + " from your apps.</li></ol><h4>Windows</h4>" : "") +
-      "<ol><li>Press <b>" + (android ? "Windows installer" : "Download") + "</b>. The setup file is saved in your Downloads folder.</li>" +
-      "<li>Double-click the setup file.</li>" +
-      "<li>Click <b>Next</b>, then <b>Install</b> and <b>Finish</b>.</li>" +
-      "<li>Open " + esc(a.name) + " from the desktop icon or the Start menu.</li></ol>" +
-      '<div class="callout">If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This is normal for new apps that are not yet signed.</div></div>';
+        "<li>Open " + esc(a.name) + " from your apps.</li></ol>";
+    }
+    if (hasDl) {
+      html += (android || isOpen(a) ? "<h4>Windows</h4>" : "") +
+        "<ol><li>Press <b>" + (android ? "Windows installer" : "Download") + "</b>. The setup file is saved in your Downloads folder.</li>" +
+        "<li>Double-click the setup file.</li>" +
+        "<li>Click <b>Next</b>, then <b>Install</b> and <b>Finish</b>.</li>" +
+        "<li>Open " + esc(a.name) + " from the desktop icon or the Start menu.</li></ol>" +
+        '<div class="callout">If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This is normal for new apps that are not yet signed.</div>';
+    }
+    if (a.note) html += '<div class="callout">' + esc(a.note) + "</div>";
+    return html + "</div>";
   }
   function closeDetails() {
     if (dialog.open) dialog.close();

@@ -92,18 +92,24 @@ window.HADTAH_APPS = [
     "name": "TTu",
     "category": "AI & Research",
     "description": "Ask anything: TTu searches open sources and writes a clear answer you can save as a PDF.",
-    "details": "TTu searches only open, free sources (Wikipedia, research papers from OpenAlex, arXiv and Crossref, and public Bluesky and Mastodon posts), writes a clear answer with numbered source links, and puts a Download as PDF button under every answer. Sign in with your Gmail address and a 6-digit code. 15 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). This is a TEST version: the sign-in code is shown on screen instead of emailed, answers are built straight from the sources until the AI is switched on, and payments are not live yet.",
-    "version": "0.1 (test)",
-    "size": "Web app",
+    "details": "TTu searches open, free sources — encyclopaedias, research papers (OpenAlex, arXiv, Crossref), Google News, BBC and other news sites, public posts, and YouTube — then writes a clear answer with numbered source links and a Download as PDF button. Answers are written with Gemini AI (and fall back to a source summary if the free search quota is reached). Sign in with your Gmail address and a 6-digit code. 15 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). This is a TEST version: the sign-in code is shown on screen instead of emailed, and payments are not live yet. You can also install TTu on Android or Windows; it opens the same live app.",
+    "version": "1.0.0 (test)",
+    "size": "Web app · Android 5.9 MB · Windows 116 MB",
     "platforms": ["Any browser", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
     "open_url": "https://ttu.hadtah.workers.dev",
     "open_label": "Open TTu",
+    "download_url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe",
+    "downloads": [
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-1.0.0-debug.apk", "size": "5.9 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe", "size": "116 MB", "kind": "windows" }
+    ],
     "note": "Test mode: your sign-in code appears on screen.",
     "icon": "assets/icons/ttu.png",
     "featured": true,
     "changelog": [
+      { "version": "1.0.0", "date": "2026-11-13", "notes": "Black-and-white interface, Gemini AI answers, Google News, BBC and YouTube, plus Android and Windows apps." },
       { "version": "0.1", "date": "2026-11-13", "notes": "First test version online." }
     ]
   },
