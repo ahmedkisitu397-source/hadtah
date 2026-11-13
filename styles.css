@@ -1,7 +1,7 @@
 /* Hadtah website. Native system font, light and dark themes, no external requests. */
 :root{
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
-  --brand:#0d9488;--brand-2:#059669;--brand-3:#2dd4bf;--grad:linear-gradient(135deg,#14b8a6 0%,#059669 100%);
+  --brand:#0f766e;--brand-2:#059669;--brand-3:#2dd4bf;--grad:linear-gradient(135deg,#0f766e 0%,#047857 100%);
   --bg:#f7f8fa;--bg-2:#eef1f5;--card:#ffffff;--ink:#0b1220;--ink-2:#334155;--muted:#5b6578;--line:#e3e7ee;--line-2:#d3d9e3;
   --chip:#eef2f6;--shadow-sm:0 1px 2px rgba(15,23,42,.05),0 4px 14px -6px rgba(15,23,42,.10);
   --shadow:0 1px 2px rgba(15,23,42,.04),0 20px 40px -22px rgba(15,23,42,.22);
@@ -158,7 +158,7 @@ h1,h2,h3,h4{margin:0;letter-spacing:-.02em;line-height:1.15}
 .sc-block h4{font-size:13px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .how{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:12px}
 .how li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:14.5px;color:var(--ink-2);line-height:1.45}
-.how li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:750;font-size:13px;color:#fff;background:var(--accent-grad,var(--grad));box-shadow:0 6px 14px -6px var(--accent,#059669)}
+.how li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:750;font-size:13px;color:var(--ink);background:color-mix(in srgb,var(--accent,#14b8a6) 22%,var(--card));border:1px solid color-mix(in srgb,var(--accent,#14b8a6) 55%,transparent)}
 .who{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .who li{font-size:13.5px;font-weight:600;padding:7px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent,#14b8a6) 12%,var(--card));border:1px solid color-mix(in srgb,var(--accent,#14b8a6) 28%,var(--line));color:var(--ink)}
 .gallery{display:grid;gap:12px}
@@ -300,3 +300,20 @@ dialog[open]{animation:pop .25s cubic-bezier(.2,.7,.2,1)}
 html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
 button,input,select,textarea,optgroup{font-family:inherit}
 h1,h2,h3,h4,h5,h6,summary,label,dialog,pre,code,kbd,samp,svg,svg text{font-family:inherit}
+
+/* ---------- theme switch: System / Light / Dark ---------- */
+.theme-seg{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
+.theme-seg button{all:unset;display:grid;place-items:center;width:32px;height:30px;border-radius:999px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.theme-seg button:hover{color:var(--ink)}
+.theme-seg button[aria-checked="true"]{background:var(--card);color:var(--ink);box-shadow:var(--shadow-sm)}
+.theme-seg button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+@media (max-width:900px){.theme-seg button{width:30px}}
+/* Ask TTu panel follows the site theme (TTu itself stays black and white) */
+[data-theme="light"] .attu-panel{background:#fff;color:#111;border-color:#d4d4d4}
+[data-theme="light"] .attu-head{border-bottom-color:#e5e5e5}
+[data-theme="light"] .attu-head a,[data-theme="light"] .attu-head button{color:#333;border-color:#cfcfcf}
+[data-theme="light"] .attu-head a:hover,[data-theme="light"] .attu-head button:hover{color:#000;border-color:#777}
+[data-theme="light"] .attu-body,[data-theme="light"] .attu-body iframe{background:#fff}
+[data-theme="light"] .attu-msg{color:#404040}
+[data-theme="light"] .attu-msg strong,[data-theme="light"] .attu-msg a{color:#000}
+[data-theme="dark"] .attu-btn{background:#fff;color:#0a0a0a;border-color:rgba(0,0,0,.1)}

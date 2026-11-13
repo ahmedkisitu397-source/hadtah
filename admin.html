@@ -7,7 +7,7 @@
   <title>Hadtah — App entry helper</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.dataset.theme = localStorage.getItem("hadtah-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <script>(function(){var p="system";try{p=localStorage.getItem("hadtah-theme")||"system"}catch(e){}var t=(p==="light"||p==="dark")?p:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t})();</script>
   <style>
     .admin { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
     .admin form { display: grid; gap: .8rem; padding: 1.4rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
