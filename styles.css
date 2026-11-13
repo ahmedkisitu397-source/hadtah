@@ -332,3 +332,4 @@ h1,h2,h3,h4,h5,h6,summary,label,dialog,pre,code,kbd,samp,svg,svg text{font-famil
 .footer :focus-visible{outline-color:#2dd4bf}
 /* Ask TTu stays clear of the dark footer: switch to the white style while the footer is on screen */
 html.foot-in .attu-btn{background:#fff;color:#0a0a0a;border-color:rgba(0,0,0,.1);box-shadow:0 12px 30px -10px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.25)}
+.footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
