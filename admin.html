@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Hadtah — App entry helper</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.dataset.theme = localStorage.getItem("hadtah-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <style>
+    .admin { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .admin form { display: grid; gap: .8rem; padding: 1.4rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+    .admin label { display: grid; gap: .3rem; font-weight: 500; font-size: .9rem; }
+    .admin small { color: var(--muted); font-weight: 400; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .check { display: flex !important; align-items: center; gap: .5rem; }
+    pre { margin: 0; padding: 1.2rem; background: var(--navy); color: #d7fff8; border-radius: var(--radius); overflow: auto; font-size: .85rem; white-space: pre-wrap; word-break: break-word; min-height: 200px; }
+    .out { position: sticky; top: 84px; display: grid; gap: .8rem; }
+    @media (max-width: 860px) { .admin { grid-template-columns: 1fr; } .out { position: static; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="wrap topbar-inner">
+    <a class="brand" href="index.html"><img src="assets/hadtah-logo.svg" alt="" width="32" height="32"><svg class="wordmark" viewBox="-1.5 -1.5 147 23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-label="HADTAH"><path d="M0 0V20M14 0V20M0 10H14"/><path d="M26 20L33 0L40 20"/><path d="M52 0H57A9 10 0 0 1 57 20H52Z"/><path d="M78 0H92M85 0V20"/><path d="M104 20L111 0L118 20"/><path d="M130 0V20M144 0V20M130 10H144"/></svg></a>
+    <span class="muted" style="margin-left:auto">App entry helper</span>
+  </div></header>
+  <main class="section"><div class="wrap">
+    <h1 style="font-size:clamp(1.6rem,3vw,2.2rem)">Add or update an app</h1>
+    <p class="muted">Fill the form. The box on the right builds the entry for you. Press <b>Copy entry</b>, open <code>apps.js</code>, paste it inside the square brackets (add a comma after the block before it), save and upload. This page saves nothing and sends nothing.</p>
+    <div class="admin">
+      <form id="f">
+        <div class="row">
+          <label>App name<input name="name" required placeholder="Offline Library App"></label>
+          <label>ID <small>(auto, lowercase, no spaces)</small><input name="id" placeholder="offline-library"></label>
+        </div>
+        <div class="row">
+          <label>Category<input name="category" list="cats" placeholder="Education"></label>
+          <label>Version<input name="version" value="1.0"></label>
+        </div>
+        <datalist id="cats"><option>Education</option><option>Business</option><option>Productivity</option><option>Security</option><option>Utilities</option></datalist>
+        <label>Short description <small>(one sentence for the card)</small><textarea name="description" rows="2"></textarea></label>
+        <label>What it does <small>(longer text for the details view)</small><textarea name="details" rows="4"></textarea></label>
+        <div class="row">
+          <label>Size <small>(e.g. 12 MB, or leave blank)</small><input name="size" placeholder="TBA"></label>
+          <label>Tested on (date)<input name="tested_on" type="date"></label>
+        </div>
+        <label>Platforms <small>(comma separated)</small><input name="platforms" value="Windows 10, Windows 11"></label>
+        <label>Download link <small>(GitHub Release file link; leave blank if not uploaded yet)</small><input name="download_url" type="url" placeholder="https://github.com/OWNER/hadtah-apps/releases/download/library-v1.0/Library_Setup.exe"></label>
+        <label>Icon file <small>(put the image in assets/icons/)</small><input name="icon" placeholder="assets/icons/library.svg"></label>
+        <label>What changed in this version<textarea name="notes" rows="2" placeholder="First version."></textarea></label>
+        <label class="check"><input type="checkbox" name="featured"> Featured (shown first)</label>
+      </form>
+      <div class="out">
+        <pre id="out"></pre>
+        <button class="btn btn-primary" id="copy" type="button">Copy entry</button>
+        <span class="muted" id="msg" aria-live="polite"></span>
+      </div>
+    </div>
+  </div></main>
+  <script>
+    (function () {
+      var f = document.getElementById("f"), out = document.getElementById("out");
+      function slug(s) { return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+      function build() {
+        var v = function (n) { return f[n].value.trim(); };
+        var url = v("download_url");
+        var entry = {
+          id: v("id") || slug(v("name")),
+          name: v("name"),
+          category: v("category") || "Utilities",
+          description: v("description"),
+          details: v("details"),
+          version: v("version") || "1.0",
+          size: v("size") || "TBA",
+          platforms: v("platforms").split(",").map(function (p) { return p.trim(); }).filter(Boolean),
+          tested_on: v("tested_on"),
+          status: url ? "available" : "coming soon",
+          download_url: url || "#",
+          icon: v("icon") || "assets/hadtah-logo.svg",
+          featured: f.featured.checked,
+          changelog: [{ version: v("version") || "1.0", date: v("tested_on"), notes: v("notes") || "First version." }]
+        };
+        out.textContent = JSON.stringify(entry, null, 2);
+      }
+      f.addEventListener("input", build); build();
+      document.getElementById("copy").addEventListener("click", function () {
+        var m = document.getElementById("msg");
+        navigator.clipboard.writeText(out.textContent).then(function () { m.textContent = "Copied. Now paste it into apps.js."; },
+          function () { m.textContent = "Copy failed: select the text in the box and press Ctrl+C."; });
+      });
+    })();
+  </script>
+</body>
+</html>

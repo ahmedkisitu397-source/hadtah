@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hadtah — Free, tested apps for schools and small businesses</title>
+  <meta name="description" content="Download free desktop apps from Hadtah Technologies Limited, Uganda. Every app is tested and proven to work before it is listed.">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem("hadtah-theme");
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#apps">Skip to apps</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Hadtah home">
+        <img src="assets/hadtah-logo.svg" alt="" width="36" height="36">
+        <svg class="wordmark" viewBox="-1.5 -1.5 147 23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" role="img" aria-label="HADTAH"><path d="M0 0V20M14 0V20M0 10H14"/><path d="M26 20L33 0L40 20"/><path d="M52 0H57A9 10 0 0 1 57 20H52Z"/><path d="M78 0H92M85 0V20"/><path d="M104 20L111 0L118 20"/><path d="M130 0V20M144 0V20M130 10H144"/></svg>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#apps">Apps</a>
+        <a href="#install">How to install</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch light or dark mode">
+        <svg class="sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <img class="hero-logo" src="assets/hadtah-logo.svg" alt="Hadtah logo" width="88" height="88">
+        <p class="eyebrow">Hadtah Technologies Limited · Uganda</p>
+        <h1>Free, tested apps for schools and small businesses</h1>
+        <p class="lead">Download desktop apps that work offline. Every app here has been tested on real computers and proven to work before we list it.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#apps">Browse apps</a>
+          <a class="btn btn-ghost" href="#install">How to install</a>
+        </div>
+        <ul class="trust">
+          <li><span class="dot"></span>Free to download</li>
+          <li><span class="dot"></span>Works offline</li>
+          <li><span class="dot"></span>Tested before listing</li>
+          <li><span class="dot"></span>No ads, no tracking</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="apps" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Apps</h2>
+          <p class="muted">Pick an app, read what it does, then download the installer.</p>
+        </div>
+        <div class="tools">
+          <label class="search">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <span class="sr">Search apps</span>
+            <input id="search" type="search" placeholder="Search apps…" autocomplete="off">
+          </label>
+          <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+        </div>
+        <p class="result-count muted" id="resultCount" aria-live="polite"></p>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>No apps match your search. Try another word or pick “All”.</p>
+      </div>
+    </section>
+
+    <section id="install" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How to install</h2>
+          <p class="muted">Works on Windows 10 and Windows 11. You don’t need Python or internet to use the apps.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="num">1</span><div><h3>Download</h3><p>Press <b>Download</b> on the app you want. The setup file goes to your <b>Downloads</b> folder. You can also copy it to a flash drive to install on PCs with no internet.</p></div></li>
+          <li><span class="num">2</span><div><h3>Open the setup file</h3><p>Double-click the file. If Windows shows <b>“Windows protected your PC”</b>, click <b>More info</b>, then <b>Run anyway</b>. This appears for new apps that are not yet signed; it is normal.</p></div></li>
+          <li><span class="num">3</span><div><h3>Install</h3><p>Click <b>Next</b>, tick <b>Create a desktop shortcut</b>, then <b>Install</b> and <b>Finish</b>.</p></div></li>
+          <li><span class="num">4</span><div><h3>Use it</h3><p>Double-click the new desktop icon. To remove an app later, go to <b>Settings › Apps › Installed apps</b> and choose <b>Uninstall</b>.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div>
+          <h2>About Hadtah</h2>
+          <p>Hadtah Technologies Limited is a Ugandan software company. The name comes from the Aramaic <i>hadta</i>, meaning “new” or “renewed”. We build simple, useful software for learners, teachers, schools and small businesses, and we share tested desktop apps here for free.</p>
+          <p>We are also the makers of <a href="https://eilpah.vercel.app" target="_blank" rel="noopener">Eilpah</a>, a learning app for students and teachers.</p>
+        </div>
+        <div class="about-card">
+          <img src="assets/hadtah-logo.svg" alt="" width="64" height="64">
+          <h3>Our promise</h3>
+          <ul class="ticks">
+            <li>Every app is tested on real Windows PCs before it is listed.</li>
+            <li>Each listing shows the date it was last tested.</li>
+            <li>No ads, no trackers, no hidden fees.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="wrap contact">
+        <div>
+          <h2>Contact</h2>
+          <p class="muted">Found a problem, or want an app made for your school or business? Write to us.</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <label>Your name<input name="name" required autocomplete="name"></label>
+          <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="note muted">This opens your email app with the message ready to send to <a id="contactEmail" href="mailto:hello@hadtah.com">hello@hadtah.com</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand small">
+        <img src="assets/hadtah-logo.svg" alt="" width="28" height="28">
+        <svg class="wordmark" viewBox="-1.5 -1.5 147 23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M0 0V20M14 0V20M0 10H14"/><path d="M26 20L33 0L40 20"/><path d="M52 0H57A9 10 0 0 1 57 20H52Z"/><path d="M78 0H92M85 0V20"/><path d="M104 20L111 0L118 20"/><path d="M130 0V20M144 0V20M130 10H144"/></svg>
+      </div>
+      <p class="muted">© 2026 Hadtah Technologies Limited · Uganda · Makers of <a href="https://eilpah.vercel.app" target="_blank" rel="noopener">Eilpah</a></p>
+    </div>
+  </footer>
+
+  <dialog id="details" aria-labelledby="dTitle">
+    <div class="dialog-body" id="detailsBody"></div>
+  </dialog>
+
+  <script src="apps.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
