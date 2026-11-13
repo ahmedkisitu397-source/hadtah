@@ -187,3 +187,19 @@ dialog::backdrop { background: rgb(5 12 20 / .55); backdrop-filter: blur(3px); }
 .install-help { max-width: 760px; margin: 1rem auto 0; padding: .9rem 1.1rem; border-radius: 12px; background: rgb(245 158 11 / .1); border: 1px solid rgb(245 158 11 / .3); text-align: left; font-size: .95rem; }
 .install-help p { margin: .3rem 0; }
 .card .card-note { flex: 0 0 auto; font-size: .82rem; }
+
+/* iPhone / Add to Home Screen — shown to everyone, highlighted on iOS (incl. iPadOS) */
+.btn-iphone { white-space: nowrap; }
+html[data-client="ios"] .btn-iphone {
+  background: var(--teal);
+  color: #0a0a0a;
+  border-color: var(--teal);
+  box-shadow: 0 6px 18px rgb(45 212 191 / .35);
+  font-weight: 700;
+}
+.ios-tip {
+  margin: .55rem 0 0;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--muted, #4b625c);
+}

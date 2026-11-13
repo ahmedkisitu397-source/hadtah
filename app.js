@@ -14,6 +14,16 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  function isIOSClient() {
+    var ua = navigator.userAgent || "";
+    if (/iPad|iPhone|iPod/.test(ua)) return true;
+    // iPadOS 13+ reports as Macintosh in the UA but has a touch screen
+    if (navigator.platform === "MacIntel" && (navigator.maxTouchPoints || 0) > 1) return true;
+    return false;
+  }
+  var ON_IOS = isIOSClient();
+  try { document.documentElement.dataset.client = ON_IOS ? "ios" : "other"; } catch (e) {}
+  function iosUrl(a) { return (a.ios_url || "").trim(); }
   function isOpen(a) { return !!(a.open_url && String(a.status || "").toLowerCase() !== "coming soon"); }
   function hasDownload(a) {
     if (isOpen(a)) return true;
@@ -39,10 +49,20 @@
   }
   var DL_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
   var OPEN_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  var IPHONE_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg>';
+  var IOS_TIP = "On iPhone: open in Safari, tap Share, then Add to Home Screen";
+  function iosTip(a) {
+    if (!iosUrl(a) || String(a.status || "").toLowerCase() === "coming soon") return "";
+    return '<p class="ios-tip">' + esc(IOS_TIP) + "</p>";
+  }
   function downloadBtn(a, cls) {
     var parts = [];
     if (isOpen(a)) {
       parts.push('<a class="btn btn-primary ' + cls + '" href="' + esc(a.open_url) + '" target="_blank" rel="noopener">' + OPEN_ICON + esc(a.open_label || "Open") + "</a>");
+    }
+    if (iosUrl(a) && String(a.status || "").toLowerCase() !== "coming soon") {
+      var kind = ON_IOS ? "btn-primary btn-iphone " : "btn-outline btn-iphone ";
+      parts.push('<a class="btn ' + kind + cls + '" href="' + esc(iosUrl(a)) + '" target="_blank" rel="noopener">' + IPHONE_ICON + esc(a.ios_label || "Open on iPhone") + "</a>");
     }
     var list = Array.isArray(a.downloads) ? a.downloads : [];
     if (list.length && String(a.status || "").toLowerCase() !== "coming soon") {
@@ -89,6 +109,7 @@
         (a.note ? '<p class="card-note">' + esc(a.note) + "</p>" : "") +
         '<div class="card-actions">' + downloadBtn(a, "btn-sm") +
         '<button type="button" class="btn btn-ghost btn-sm" data-open="' + esc(a.id) + '">Details</button></div>' +
+        iosTip(a) +
         "</article>";
     }).join("");
     empty.hidden = list.length > 0;
@@ -115,7 +136,8 @@
       '<div class="d-sec"><h3>What it does</h3><p>' + esc(a.details || a.description) + "</p></div>" +
       installHelp(a) +
       '<div class="d-sec"><h3>What’s new</h3><ul class="changelog">' + log + "</ul></div>" +
-      '<div class="d-actions">' + downloadBtn(a, "") + '<button type="button" class="btn btn-ghost" data-close>Close</button></div>';
+      '<div class="d-actions">' + downloadBtn(a, "") + '<button type="button" class="btn btn-ghost" data-close>Close</button></div>' +
+      iosTip(a);
     if (!dialog.open) dialog.showModal();
     if (push && location.hash !== "#app/" + a.id) history.pushState(null, "", "#app/" + a.id);
   }
@@ -124,9 +146,14 @@
     var hasDl = Array.isArray(a.downloads) && a.downloads.length;
     var html = '<div class="d-sec"><h3>' + (isOpen(a) && hasDl ? "How to use or install" : isOpen(a) ? "How to use" : "How to install") + "</h3>";
     if (isOpen(a)) {
-      html += (hasDl ? "<h4>In your browser</h4>" : "") + "<ol>" +
+      html += (hasDl || iosUrl(a) ? "<h4>In your browser</h4>" : "") + "<ol>" +
         "<li>Press <b>" + esc(a.open_label || "Open") + "</b>. It opens in your browser; nothing to install.</li>" +
         "<li>To keep it like an app, use your browser menu: <b>Install app</b> or <b>Add to Home screen</b>.</li></ol>";
+    }
+    if (iosUrl(a)) {
+      html += "<h4>iPhone</h4><ol>" +
+        "<li>Press <b>" + esc(a.ios_label || "Open on iPhone") + "</b> to open the website in Safari (nothing to download).</li>" +
+        "<li>Tap <b>Share</b>, then <b>Add to Home Screen</b>.</li></ol>";
     }
     if (hasDl && android) {
       html += "<h4>Android</h4><ol>" +

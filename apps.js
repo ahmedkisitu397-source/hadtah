@@ -5,7 +5,16 @@
   paste it after the last one (put a comma between blocks), change the values,
   save, and upload. No other file needs to change. See README.md for every field.
   Tip: open admin.html in your browser to fill a form that writes a block for you.
+
+  Website URLs for TTu and Eilpah (open in the browser or on iPhone — nothing to
+  download). Switch these two values to https://ttu.hadtah.com and
+  https://eilpah.hadtah.com when the custom domains go live.
 */
+var HADTAH_WEB = {
+  ttu: "https://ttu.hadtah.workers.dev",
+  eilpah: "https://eilpah.hadtah.workers.dev"
+};
+
 window.HADTAH_APPS = [
   {
     "id": "offline-library",
@@ -95,11 +104,13 @@ window.HADTAH_APPS = [
     "details": "TTu searches open, free sources — encyclopaedias, research papers (OpenAlex, arXiv, Crossref), Google News, BBC and other news sites, public posts, and YouTube — then writes a clear answer with numbered source links and a Download as PDF button. Answers are written with Gemini AI (and fall back to a source summary if the free search quota is reached). Sign in with your Gmail address and a 6-digit code. 15 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). This is a TEST version: the sign-in code is shown on screen instead of emailed, and payments are not live yet. You can also install TTu on Android or Windows; it opens the same live app.",
     "version": "1.0.0 (test)",
     "size": "Web app · Android 5.9 MB · Windows 116 MB",
-    "platforms": ["Any browser", "Android", "Windows"],
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
-    "open_url": "https://ttu.hadtah.workers.dev",
+    "open_url": HADTAH_WEB.ttu,
     "open_label": "Open TTu",
+    "ios_url": HADTAH_WEB.ttu,
+    "ios_label": "Open on iPhone",
     "download_url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe",
     "downloads": [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-1.0.0-debug.apk", "size": "5.9 MB", "kind": "android" },
@@ -121,11 +132,13 @@ window.HADTAH_APPS = [
     "details": "Eilpah connects students and guardians with verified teachers: lessons and topics by subject and syllabus, live classes, quizzes, progress records and a learning feed. This copy has just moved to new hosting, so you can look around the pages now; signing in and creating accounts will come back shortly.",
     "version": "2026.10",
     "size": "Web app",
-    "platforms": ["Any browser", "Android", "Windows"],
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
-    "open_url": "https://eilpah.hadtah.workers.dev",
+    "open_url": HADTAH_WEB.eilpah,
     "open_label": "Open Eilpah",
+    "ios_url": HADTAH_WEB.eilpah,
+    "ios_label": "Open on iPhone",
     "note": "Sign-in coming back soon.",
     "icon": "assets/icons/eilpah.png",
     "featured": true,
