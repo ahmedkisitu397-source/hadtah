@@ -1,0 +1,2 @@
+{ "name": "hadtah", "compatibility_date": "2026-11-01", "workers_dev": true, "preview_urls": false,
+  "assets": { "directory": ".", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" } }
