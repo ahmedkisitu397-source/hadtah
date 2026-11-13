@@ -150,7 +150,7 @@ window.HADTAH_APPS = [
     "description": "Run a school library with no internet: books, members, lending, returns and overdue reports.",
     "details": "Offline Library is the professional version of the Senior One Offline Library App project. Add every book with title, author, ISBN, category, shelf and number of copies, or import the whole list from Excel (CSV). Register students and teachers, lend a book with a due date, then return or renew it; overdue books turn red and the dashboard shows what needs follow-up. Optional fines per day late, a borrowing limit per member, and PDF or CSV reports of the catalogue, overdue books, books on loan, members and lending history. Everything is saved on your own device and works fully offline. Download a backup file to move it to another phone or computer.",
     "version": "1.0.0",
-    "size": "Web app · Android 7.6 MB · Windows 123 MB",
+    "size": "Web app · Android 7.3 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
@@ -160,8 +160,8 @@ window.HADTAH_APPS = [
     "ios_label": "Open on iPhone",
     "download_url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe",
     "downloads": [
-      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-1.0.0-debug.apk", "size": "7.6 MB", "kind": "android" },
-      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe", "size": "123 MB", "kind": "windows" }
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-1.0.0-debug.apk", "size": "7.3 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
     "note": "Works without internet. Your library stays on your device, so download a backup now and then (Settings).",
     "icon": "assets/icons/offline-library.png",
@@ -183,7 +183,7 @@ window.HADTAH_APPS = [
     "description": "Track money in and money out for your business, see your balance and profit, and print reports. Works offline.",
     "details": "Cash Flow is the professional version of the Senior One Cash Flow Tracker project. Record each sale, payment or expense with amount, category, date, Cash or Mobile Money, customer or supplier and receipt number. The dashboard shows your balance, money in and out this month against last month, profit and margin, a 6-month chart and the 30-day balance trend. Reports give daily, weekly or monthly summaries with a running balance and where the money came from and went, as PDF or CSV. Set monthly budgets per category and an income target, keep several businesses with their own currency (UGX by default), and import entries from Excel. Everything is saved on your device and works fully offline.",
     "version": "1.0.0",
-    "size": "Web app · Android 7.8 MB · Windows 123 MB",
+    "size": "Web app · Android 7.6 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
@@ -193,8 +193,8 @@ window.HADTAH_APPS = [
     "ios_label": "Open on iPhone",
     "download_url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe",
     "downloads": [
-      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-1.0.0-debug.apk", "size": "7.8 MB", "kind": "android" },
-      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe", "size": "123 MB", "kind": "windows" }
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-1.0.0-debug.apk", "size": "7.6 MB", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
     "note": "Works without internet. Your records stay on your device, so download a backup now and then (Settings).",
     "icon": "assets/icons/cash-flow.png",
