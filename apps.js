@@ -58,7 +58,7 @@ window.HADTAH_APPS = [
     "name": "TTu",
     "category": "AI & Research",
     "description": "Ask anything: TTu searches open sources and writes a clear answer you can save as a PDF.",
-    "details": "TTu searches open, free sources — encyclopaedias, research papers (OpenAlex, arXiv, Crossref), Google News, BBC and other news sites, public posts, and YouTube — then writes a clear answer with numbered source links and a Download as PDF button. Answers are written with Gemini AI (and fall back to a source summary if the free search quota is reached). Sign in with your Gmail address and a 6-digit code. 15 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). This is a TEST version: the sign-in code is shown on screen instead of emailed, and payments are not live yet. You can also install TTu on Android or Windows; it opens the same live app.",
+    "details": "TTu searches open, free sources — encyclopaedias, research papers (OpenAlex, arXiv, Crossref), Google News, BBC and other news sites, public posts, and YouTube — then writes a clear answer with numbered source links and a Download as PDF button. Answers are written with Gemini AI (and fall back to a source summary if the free search quota is reached). Sign in with your Gmail address and a 6-digit code. 20 questions a day; 20 free PDF downloads, then the weekly plan (US$0.81 a week). Free during launch until 15 Dec 2026. This is a TEST version: the sign-in code is shown on screen instead of emailed, and payments are not live yet. You can also install TTu on Android or Windows; it opens the same live app.",
     "version": "1.0.0 (test)",
     "size": "Web app · Android 5.8 MB · Windows 122 MB",
     "platforms": ["Any browser", "iPhone", "Android", "Windows"],
