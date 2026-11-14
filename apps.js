@@ -14,7 +14,9 @@ var HADTAH_WEB = {
   ttu: "https://ttu.hadtah.com",
   eilpah: "https://eilpah.hadtah.com",
   library: "https://library.hadtah.com",
-  cashflow: "https://cashflow.hadtah.com"
+  cashflow: "https://cashflow.hadtah.com",
+  ennun: "https://ennun.hadtah.com",
+  lamma: "https://lamma.hadtah.com"
 };
 
 window.HADTAH_APPS = [
@@ -22,8 +24,8 @@ window.HADTAH_APPS = [
     "id": "eilpah",
     "tagline": "Lessons from verified teachers, Senior 1 to Senior 6",
     "accent": "#38bdf8",
-    "how": ["Open Eilpah in your browser. Nothing to install.", "Choose who you are: a student, a guardian or a teacher.", "Pick your class and subject. Lessons follow the Ugandan curriculum.", "Learn with lessons, quizzes and live classes, and follow your progress."],
-    "features": ["Lessons and topics by subject and syllabus", "Teachers are verified before they teach", "Live classes with a teacher", "Quizzes and progress records", "A learning feed for each class", "Works in any browser and on iPhone"],
+    "how": ["Open Eilpah in your browser, add it to your iPhone (iPhone 6s or later, iOS 15+), or install the Android or Windows app.", "Choose who you are: a student, a guardian or a teacher.", "Pick your class and subject. Lessons follow the Ugandan curriculum.", "Learn with lessons, quizzes and live classes, and follow your progress."],
+    "features": ["Lessons and topics by subject and syllabus", "Teachers are verified before they teach", "Live classes with a teacher", "Quizzes and progress records", "A learning feed for each class", "Works in any browser, on iPhone 6s or later (iOS 15+), and as Android and Windows apps"],
     "benefits": ["Secondary students (S1 to S6)", "Parents and guardians", "Teachers", "Schools"],
     "screenshots": [{ "src": "assets/shots/eilpah-1.webp", "alt": "Eilpah home page" }, { "src": "assets/shots/eilpah-2.webp", "alt": "Choosing student or teacher when creating an account" }, { "src": "assets/shots/eilpah-3.webp", "alt": "Eilpah sign-in" }],
     "name": "Eilpah",
@@ -31,18 +33,24 @@ window.HADTAH_APPS = [
     "description": "Lessons from verified teachers, following the Ugandan curriculum, for Senior 1 to Senior 6.",
     "details": "Eilpah connects students and guardians with verified teachers: lessons and topics by subject and syllabus, live classes, quizzes, progress records and a learning feed. This copy has just moved to new hosting, so you can look around the pages now; signing in and creating accounts will come back shortly.",
     "version": "2026.10",
-    "size": "Web app",
-    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
+    "size": "Web app · Android and Windows apps",
+    "platforms": ["Any browser", "iPhone 6s / iOS 15+", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
     "open_url": HADTAH_WEB.eilpah,
     "open_label": "Open Eilpah",
     "ios_url": HADTAH_WEB.eilpah,
-    "ios_label": "Open on iPhone",
-    "note": "Sign-in coming back soon.",
+    "ios_label": "Open on iPhone/iPad (Add to Home Screen)",
+    "download_url": "https://github.com/ahmedkisitu397-source/HomeStudentV-final/releases/download/v1.0.0/Eilpah-Setup-1.0.0.exe",
+    "downloads": [
+      { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/HomeStudentV-final/releases/download/v1.0.0/Eilpah-1.0.0-debug.apk", "size": "APK", "kind": "android" },
+      { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/HomeStudentV-final/releases/download/v1.0.0/Eilpah-Setup-1.0.0.exe", "size": "EXE", "kind": "windows" }
+    ],
+    "note": "Sign-in coming back soon. On iPhone, Eilpah needs an iPhone 6s or newer (iOS 15 or later). Live classes work best on newer iPhones. If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/eilpah.png",
     "featured": true,
     "changelog": [
+      { "version": "1.0.0", "date": "2026-11-14", "notes": "Android and Windows apps. Live classes use H.264 so they can run on more iPhones. Add to Home Screen on iPhone 6s or later (iOS 15+)." },
       { "version": "2026.10", "date": "2026-11-13", "notes": "Moved to new hosting." }
     ]
   
@@ -73,7 +81,7 @@ window.HADTAH_APPS = [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-1.0.0-debug.apk", "size": "5.8 MB", "kind": "android" },
       { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/ttu/releases/download/v1.0.0/TTu-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
-    "note": "Test mode: your sign-in code appears on screen.",
+    "note": "Test mode: your sign-in code appears on screen. If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/ttu.png",
     "featured": true,
     "changelog": [
@@ -94,15 +102,20 @@ window.HADTAH_APPS = [
     "description": "A focus guard timer: pick your task, the program you may use and how long, and Ennun keeps you on it.",
     "details": "Ennun (Sumerian for the watch a guard keeps) is a focus guard timer by Hadtah. Choose a task, the program you are allowed to use and 1 to 180 minutes, then start. On Windows, Ennun checks every second which window is in front: if it is not your allowed program it counts a distraction, brings you back to your program and closes windows whose title contains a blocked word (YouTube, Facebook, TikTok, Instagram, Netflix by default, editable in Settings). On Android, leaving Ennun during a session counts as a distraction. To stop early you must type a set sentence exactly. Every session is logged (date, task, minutes done, distractions, result) and can be exported to CSV. Works fully offline.",
     "version": "1.0.0",
-    "size": "Android 6.4 MB · Windows 122 MB",
-    "platforms": ["Android", "Windows 10/11"],
+    "size": "Web app · Android 6.4 MB · Windows 122 MB",
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
+    "open_url": HADTAH_WEB.ennun,
+    "open_label": "Open Ennun",
+    "ios_url": HADTAH_WEB.ennun,
+    "ios_label": "Open on iPhone/iPad (Add to Home Screen)",
     "download_url": "https://github.com/ahmedkisitu397-source/ennun/releases/download/v1.0.0/Ennun-Setup-1.0.0.exe",
     "downloads": [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/ennun/releases/download/v1.0.0/Ennun-1.0.0-debug.apk", "size": "6.4 MB", "kind": "android" },
       { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/ennun/releases/download/v1.0.0/Ennun-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
+    "note": "You can also open Ennun in the browser and add it to an iPhone or iPad Home Screen. The window guard (keeping you in one program) is a Windows feature. If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/ennun.png",
     "featured": true,
     "changelog": [
@@ -122,15 +135,20 @@ window.HADTAH_APPS = [
     "description": "Paste a message you received and Lamma tells you if it looks like a scam, spam or a spy attempt.",
     "details": "Lamma (the protective spirit of ancient Sumer) is a scam message checker by Hadtah. Paste a suspicious SMS, WhatsApp or email message and its sender, and Lamma gives a verdict (Safe, Spam, Likely scam, or Danger: spy or data theft), a score and the reasons. It looks for scam and spam words, requests for PINs, OTPs, passwords or NIN, .apk/.exe install traps, links and short links, money amounts, and MTN or Airtel messages sent from an ordinary phone number. It also keeps a blocked-senders list, your own suspicious words and a history of recent checks with secret numbers hidden. Lamma only checks what you paste in; it never reads your messages by itself, and everything stays on your device.",
     "version": "1.0.0",
-    "size": "Android 6.8 MB · Windows 122 MB",
-    "platforms": ["Android", "Windows 10/11"],
+    "size": "Web app · Android 6.8 MB · Windows 122 MB",
+    "platforms": ["Any browser", "iPhone", "Android", "Windows"],
     "tested_on": "",
     "status": "available",
+    "open_url": HADTAH_WEB.lamma,
+    "open_label": "Open Lamma",
+    "ios_url": HADTAH_WEB.lamma,
+    "ios_label": "Open on iPhone/iPad (Add to Home Screen)",
     "download_url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-Setup-1.0.0.exe",
     "downloads": [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-1.0.0-debug.apk", "size": "6.8 MB", "kind": "android" },
       { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/lamma/releases/download/v1.0.0/Lamma-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
+    "note": "You can also open Lamma in the browser and add it to an iPhone or iPad Home Screen. Everything still stays on your device. If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/lamma.png",
     "featured": true,
     "changelog": [
@@ -163,7 +181,7 @@ window.HADTAH_APPS = [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-1.0.0-debug.apk", "size": "7.3 MB", "kind": "android" },
       { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/offline-library/releases/download/v1.0.0/Offline-Library-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
-    "note": "Works without internet. Your library stays on your device, so download a backup now and then (Settings).",
+    "note": "Works without internet. Your library stays on your device, so download a backup now and then (Settings). If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/offline-library.png",
     "featured": true,
     "changelog": [
@@ -196,7 +214,7 @@ window.HADTAH_APPS = [
       { "label": "Android APK", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-1.0.0-debug.apk", "size": "7.6 MB", "kind": "android" },
       { "label": "Windows installer", "url": "https://github.com/ahmedkisitu397-source/cash-flow/releases/download/v1.0.0/Cash-Flow-Setup-1.0.0.exe", "size": "122 MB", "kind": "windows" }
     ],
-    "note": "Works without internet. Your records stay on your device, so download a backup now and then (Settings).",
+    "note": "Works without internet. Your records stay on your device, so download a backup now and then (Settings). If you installed an earlier test Android APK, uninstall it once before installing this signed release.",
     "icon": "assets/icons/cash-flow.png",
     "featured": true,
     "changelog": [

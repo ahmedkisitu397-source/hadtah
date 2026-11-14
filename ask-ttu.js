@@ -24,11 +24,11 @@
     ".attu-head a,.attu-head button{all:unset;cursor:pointer;font-family:inherit;font-size:12.5px;color:#cfcfcf;padding:7px 10px;border:1px solid #333;border-radius:999px}" +
     ".attu-head a:hover,.attu-head button:hover{color:#fff;border-color:#777}" +
     ".attu-body{flex:1;position:relative;background:#0a0a0a}" +
-    ".attu-body iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0a0a0a}" +
-    ".attu-msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:28px;color:#cfcfcf;font-size:14.5px;line-height:1.55}" +
+    ".attu-body iframe{position:absolute;top:0;right:0;bottom:0;left:0;inset:0;width:100%;height:100%;border:0;background:#0a0a0a}" +
+    ".attu-msg{position:absolute;top:0;right:0;bottom:0;left:0;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:28px;color:#cfcfcf;font-size:14.5px;line-height:1.55}" +
     ".attu-msg strong{color:#fff;font-size:18px}" +
     ".attu-msg a{color:#fff}" +
-    "@media (max-width:640px){.attu-btn{bottom:calc(" + mBottom + "px + env(safe-area-inset-bottom));" + side + ":14px;padding:10px 14px 10px 11px;font-size:13.5px}.attu-panel{inset:0;width:auto;max-width:none;height:auto;border-radius:0;border:0}.attu-head{padding-top:max(12px,env(safe-area-inset-top))}}";
+    "@media (max-width:640px){.attu-btn{bottom:calc(" + mBottom + "px + env(safe-area-inset-bottom));" + side + ":14px;padding:10px 14px 10px 11px;font-size:13.5px}.attu-panel{top:0;right:0;bottom:0;left:0;inset:0;width:auto;max-width:none;height:auto;border-radius:0;border:0}.attu-head{padding-top:max(12px,env(safe-area-inset-top))}}";
   var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 10h6M12 10v5"/></svg>';
   function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html != null) e.innerHTML = html; return e; }
   function init() {
