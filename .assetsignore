@@ -1,5 +1,10 @@
-README.md
-wrangler.jsonc
+node_modules
+.wrangler
 .git
-.github
+.gitignore
 .assetsignore
+*.p12
+*.jks
+*.keystore
+.env
+.dev.vars
